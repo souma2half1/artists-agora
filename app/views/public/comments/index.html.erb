@@ -1,0 +1,26 @@
+ <div class="container mt-5">
+   <div class="row">
+     <div class="col-6">
+
+ <h2>コメント一覧</h2>
+
+ <%#= image_tag @work.image, size: "150x150" %>
+
+ <% @comments.each do |comment| %>
+  <%= comment.comment %>
+  <%= comment.user.name %>
+     <%= link_to"削除",work_comment_path(@work.id,comment.id),method: :delete %>
+ <% end %>
+
+
+ <%= form_with model:[@work,@comment],url: work_comments_path,method: :post do |f| %>
+
+  <%= f.label :"コメントする" %>
+  <%= f.text_field :comment %></br>
+
+  <%= f.submit "投稿" %>
+ <% end %>
+
+     </div>
+    </div>
+   </div>

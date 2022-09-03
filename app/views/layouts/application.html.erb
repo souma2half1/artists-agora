@@ -6,11 +6,49 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+
+
+    <h1>Artist's Agora</h1></br>
+    <% if user_signed_in? %>
+      <%= image_tag current_user.image, size: "100x100" %>
+      <p><%= current_user.name %></p>
+    <% end %>
+
+        <ul class="navbar-nav ml-auto">
+          <% if admin_signed_in? %>
+            <li  class="nav-item"> <%= link_to"トップ",admin_admin_path, class: "nav-link" %> </li>
+            <li  class="nav-item"> <%= link_to"通報一覧",admin_reports_path, class: "nav-link" %> </li>
+            <li  class="nav-item"> <%= link_to"タイムライン", admin_works_path, class: "nav-link" %> </li>
+            <li  class="nav-item"> <%= link_to"ログアウト", destroy_admin_session_path,method: :delete, class: "nav-link" %> </li>
+
+          <% elsif user_signed_in? %>
+
+            <li  class="nav-item"> <%= link_to"タイムライン", works_path, class: "nav-link" %> </li>
+            <li  class="nav-item"> <%= link_to"ランキング", ranks_path, class: "nav-link" %> </li>
+            <li  class="nav-item"> <%= link_to"新規投稿", new_work_path, class: "nav-link" %> </li>
+            <li  class="nav-item"> <%= link_to"マイページ", user_path(current_user), class: "nav-link" %> </li>
+            <li  class="nav-item"> <%= link_to"ログアウト",  destroy_user_session_path,method: :delete, class: "nav-link" %> </li>
+
+          <% else %>
+            <li  class="nav-item"> <%= link_to"ログイン",new_user_session_path, class: "nav-link" %> </li>
+
+          <% end %>
+
+        </ul>
+      </div>
+    </nav>
+  <%= yield %>
+
   </body>
 </html>

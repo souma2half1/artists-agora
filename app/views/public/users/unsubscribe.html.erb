@@ -1,0 +1,14 @@
+<div class="container mt-5">
+ <div class="row">
+   <div class="col-6">
+
+    <h>本当にアカウントを消去しますか？</h>
+
+
+    <%= link_to "はい",user_path(current_user),method: :delete %>
+
+    <%= link_to "いいえ",user_path(current_user.id) %>
+
+   </div>
+ </div>
+</div>

@@ -1,0 +1,34 @@
+<div class="container mt-5">
+ <div class="row">
+  <div class="col-6">
+
+    <h2>ユーザーページ</h2></br>
+
+    <div>自己紹介</br>
+    <%= current_user.introduction %></br>
+    </div>
+
+    <%= link_to"お気に入り",favorites_path %></br>
+
+    フォロー</br>
+    フォロワー</br>
+
+    <%= link_to"マイページ編集",edit_user_path(current_user) %></br>
+
+    <div>
+    <最新投稿></br>
+    投稿数</br>
+    <% @works.each do |work| %>
+
+      <%= link_to work_path(work.id) do %>
+      <%= image_tag work.image, size: "150x150" %>
+      <% end %></br>
+
+      <%= work.work %></br>
+
+    <% end %>
+    </div>
+
+    </div>
+   </div>
+  </div>
