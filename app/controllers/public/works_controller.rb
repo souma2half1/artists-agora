@@ -11,6 +11,7 @@ class Public::WorksController < ApplicationController
 
   def show
     @work = Work.find(params[:id])
+    @comments = @work.comments
   end
 
   def edit

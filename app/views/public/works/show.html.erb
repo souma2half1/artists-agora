@@ -20,6 +20,16 @@
   <%= link_to 'コメント投稿',work_comments_path(@work.id),method: :get %>
 
   <h4>最新コメント</h4>
+   <% @comments.each do |comment| %>
+    <%= comment.user.name %></br>
+    <%= comment.comment %></br>
+
+    <% if comment.user.id == current_user.id %>
+     <%= link_to"削除",work_comment_path(@work.id,comment.id),method: :delete %>
+    <% else %>
+     <%= link_to"報告",new_report_path %>
+    <% end %>
+    <% end %>
 
     </div>
    </div>

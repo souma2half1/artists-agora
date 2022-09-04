@@ -11,9 +11,10 @@
           <% end %>
 
           <% if current_user.already_favorited?(work) %>
-          <%= link_to"いいねを外す", work_favorites_path(work.id), method: :delete %></br>
+
+          <%= link_to"❤", work_favorites_path(work.id), method: :delete %></br>
           <% else %>
-          <%= link_to"いいね", work_favorites_path(work.id), method: :post %>
+          <%= link_to"♡", work_favorites_path(work.id), method: :post %>
           <% end %>
           <%= work.favorites.count %>
 
