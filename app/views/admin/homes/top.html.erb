@@ -1,34 +1,35 @@
-<div class = "container">
-<div class = "row">
-<div class = "col-md-12">
-
-
-<h>ユーザー一覧</h>
-
-<table class = "table">
-  <thead>
-    <tr>
-      <th>ユーザーID</th>
-      <th>ユーザー名</th>
-      <th>登録日</th>
-      <th>メールアドレス</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @users.each do |user| %>
-    <tr>
-      <td><%= user.id %></td>
-      <td><%= link_to user.name,edit_user_path(user.id) %></td>
-      <td><%= user.created_at.to_s(:datetime_jp) %></td>
-      <td><%= user.email %></td>
-    </tr>
-    <% end %>
-  </tbody>
-  </table>
-  <%= paginate @users %>
-
-  </div>
-  </div>
-  </div>
-
+  <div class = "container">
+    <div class = "row">
+      <div class = "col-md-12">
+      
+      
+      <h>ユーザー一覧</h>
+      
+      <table class = "table">
+        <thead>
+          <tr>
+            <th>ユーザーID</th>
+            <th>ユーザー名</th>
+            <th>登録日</th>
+            <th>メールアドレス</th>
+          </tr>
+        </thead>
+      
+        <tbody>
+          <% @users.each do |user| %>
+          <tr>
+            <td><%= user.id %></td>
+            <td><%= link_to user.name,edit_user_path(user.id) %></td>
+            <td><%= user.created_at.to_s(:datetime_jp) %></td>
+            <td><%= user.email %></td>
+          </tr>
+          <% end %>
+        </tbody>
+        </table>
+        <%= paginate @users %>
+      
+        </div>
+      </div>
+    </div>
+    
+    

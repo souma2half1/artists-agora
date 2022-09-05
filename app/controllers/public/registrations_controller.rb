@@ -5,7 +5,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
   before_action :check_guest, only: [:destroy,:update]
 
   def after_sign_up_path_for(resource)
-    works_path
+    admin_admin_path
   end
 
   def check_guest

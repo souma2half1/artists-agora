@@ -5,7 +5,10 @@
   <h3>作品詳細</h3></br>
 
   <%= image_tag @work.image, size: "200x200" %></br>
+
+  <%= link_to user_path(@work.user.id) do %>
   <%= @work.user.name %></br>
+  <% end %>
 
   <%= @work.genre %></br>
 

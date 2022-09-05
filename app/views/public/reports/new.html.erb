@@ -1,16 +1,16 @@
-<div class="container mt-5">
-  <div class="row">
-    <div class="col-6">
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-6">
 
-<h2>コメントを管理者に報告</h2>
+  <h2>コメントを管理者に報告</h2>
 
-<p>理由</p>
+  <p>理由</p>
 
-<%= form_with model:report,url: reports_path,method: :post %>
- <%= f.text_field :report %>
- <%= f.submit"送信" %>
-<% end %>
+  <%= form_with model:@report,url: reports_path,method: :post do |f| %>
+   <%= f.text_field :report %>
+   <%= f.submit"送信" %>
+  <% end %>
 
+    </div>
+   </div>
   </div>
- </div>
-</div>

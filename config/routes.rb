@@ -13,22 +13,21 @@ Rails.application.routes.draw do
 
   post '/homes/guest_sign_in', to: 'homes#new_guest'
    get 'users/unsubscribe'=> 'users#unsubscribe',as: "unsubscribe"
-  resources :users
+  resources :users do
+   resource :relationships, only:[:create,:destroy]
+   get :followings, on: :member
+   get :followers,  on: :member
+  end
   resources :works do
    resource :favorites,     only: [:create,:destroy]
    resources :comments,      only: [:index,:create,:destroy]
   end
   resources :favorites,      only: [:index]
-
   resources :reports,       only: [:new,:create]
   resources :ranks,         only: [:index]
   resources :follows,       only: [:index,:create,:destroy]
 
-
-
-
  end
-
 
 
   devise_for :admins, controllers: {

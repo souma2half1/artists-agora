@@ -1,0 +1,31 @@
+  <div class = "container">
+    <div class = "row">
+        <div class = "col-md-12">
+
+    <h>ユーザーからの通報</h>
+
+    <table class = "table">
+        <thead>
+          <tr>
+            <th>ユーザー名</th>
+            <th>通報されたコメント</th>
+            <th>理由</th>
+            <th></th>
+          </tr>
+        </thead>
+   　　　 <tbody>
+          <% @reports.each do |report| %>
+          <tr>
+            <td><%= @reports.user  %></td>
+            <td><%= @reports.comment %></td>
+            <td><%= @reports %></td>
+            <td><%=  link_to"削除する" ,work_comment_path(work.id),method: :delete%></td>
+          </tr>
+          <% end %>
+        </tbody>
+        </table>
+
+
+        </div>
+    </div>
+  </div>

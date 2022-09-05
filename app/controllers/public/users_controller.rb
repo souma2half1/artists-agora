@@ -8,6 +8,7 @@ class Public::UsersController < ApplicationController
 
   def edit
    @user = current_user
+   @works = @user.works.page(params[:page])
   end
 
   def update
@@ -27,6 +28,16 @@ class Public::UsersController < ApplicationController
 
 
   def unsubscribe
+  end
+
+  def followings
+    #user = User.find(params[:id])
+    #@users = user.followings
+  end
+
+  def followers
+    #user = User.find(params[:id])
+    #user = user.followers
   end
 
   private

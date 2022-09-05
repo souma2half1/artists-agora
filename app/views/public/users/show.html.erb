@@ -4,14 +4,14 @@
 
     <h2>ユーザーページ</h2></br>
 
-    <div>自己紹介</br>
+    自己紹介</br>
     <%= current_user.introduction %></br>
-    </div>
+
 
     <%= link_to"お気に入り",favorites_path %></br>
 
-    フォロー</br>
-    フォロワー</br>
+    <%= link_to"フォロー",followings_user_path %></br>
+    <%= link_to"フォロワー",followers_user_path %></br>
 
     <%= link_to"マイページ編集",edit_user_path(current_user) %></br>
 
@@ -27,6 +27,8 @@
       <%= work.work %></br>
 
     <% end %>
+
+    <%= paginate @works %>
     </div>
 
     </div>
