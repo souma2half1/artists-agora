@@ -9,7 +9,7 @@
     <%= form_with model:@work,url: work_path(@work.id),method: :patch do |f| %>
 
      <div class="field">
-     <%= f.label :"作品" %><br>
+     <%= f.label :"作品画像" %><br>
      <%= f.file_field :image, accept: "image/*" %>
      </div>
 

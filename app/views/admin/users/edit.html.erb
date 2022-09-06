@@ -1,0 +1,33 @@
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-6">
+
+<h2>ユーザー情報編集</h2></br>
+  <%= image_tag @user.image, size: "100x100" %>
+
+  <%= form_with model:@user,url: user_path,method: :patch do |f| %>
+
+
+    <%= f.label :"プロフィール画像" %>
+    <%= f.file_field :image, accept: "image/*" , class: "form-controll" %></br>
+
+    <%= f.label :"ユーザー名" %>
+    <%= f.text_field :name %></br>
+
+    <%= f.label :"自己紹介" %>
+    <%= f.text_area :introduction %></br>
+
+    <%= f.label :"メールアドレス" %>
+    <%= f.text_area :email %></br>
+
+    <%= f.submit '変更を保存' %></br>
+
+  <% end %>
+
+  <%= link_to "アカウントを削除",admin_user_path(@user.id) %></br>
+
+
+   </div>
+  </div>
+ </div>

@@ -4,24 +4,25 @@
 
         <h2>最新投稿一覧</h2></br>
           <div>
+
           <% @works.each do |work| %>
 
+          ユーザー：<%= work.user.name %></br>
+
           <%= link_to work_path(work.id) do %>
-          <%= image_tag work.image, size: "150x150" %>
+            <%= image_tag work.image, size: "150x150" %></br>
+          <% end %>
+          <% if user_signed_in? %>
+            <% if current_user.already_favorited?(work) %>
+              <%= link_to"❤", work_favorites_path(work.id), method: :delete %></br>
+            <% else %>
+              <%= link_to"♡", work_favorites_path(work.id), method: :post %>
+            <% end %>
+          <% end %>
+            <%= work.favorites.count %>いいね</br>
+            作品名：<%= work.work %></br>
           <% end %>
 
-          <% if current_user.already_favorited?(work) %>
-
-          <%= link_to"❤", work_favorites_path(work.id), method: :delete %></br>
-          <% else %>
-          <%= link_to"♡", work_favorites_path(work.id), method: :post %>
-          <% end %>
-          <%= work.favorites.count %>
-
-
-          <%= work.work %>
-          <% end %>
-          
           <%= paginate @works %>
 
            </div>
@@ -29,6 +30,4 @@
      </div>
     </div>
   </div>
-
-
 

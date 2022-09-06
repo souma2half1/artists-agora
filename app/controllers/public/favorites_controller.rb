@@ -1,7 +1,7 @@
 class Public::FavoritesController < ApplicationController
 
   def index
-   #@works = current_user.favorites.works.page(params[:page])
+   @works = current_user.favorites
   end
 
   def create
@@ -12,7 +12,8 @@ class Public::FavoritesController < ApplicationController
 
   def destroy
     @work = Work.find(params[:work_id])
-    @favorite = current_user.favorites.find_by(work_id: @work_id)
+    @favorite = current_user.favorites.find_by(work_id: @work.id)
+   #binding.pry
     @favorite.destroy
     redirect_back(fallback_location: root_path)
   end

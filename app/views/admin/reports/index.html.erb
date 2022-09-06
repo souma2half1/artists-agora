@@ -2,7 +2,7 @@
     <div class = "row">
         <div class = "col-md-12">
 
-    <h>ユーザーからの通報</h>
+    <h2>ユーザーからの通報</h2>
 
     <table class = "table">
         <thead>
@@ -16,9 +16,9 @@
    　　　 <tbody>
           <% @reports.each do |report| %>
           <tr>
-            <td><%= @reports.user  %></td>
-            <td><%= @reports.comment %></td>
-            <td><%= @reports %></td>
+            <td><%= report.user.name %></td>
+            <td><%= report.comment %></td>
+            <td><%= report.report %></td>
             <td><%=  link_to"削除する" ,work_comment_path(work.id),method: :delete%></td>
           </tr>
           <% end %>
