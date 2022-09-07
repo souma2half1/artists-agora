@@ -1,9 +1,9 @@
 class Public::UsersController < ApplicationController
 
   def show
-   @user = current_user
+   @user = User.find(params[:id])
    @image = @user.image
-   @works = current_user.works.page(params[:page])
+   @works = @user.works.page(params[:page])
   end
 
   def edit

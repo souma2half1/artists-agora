@@ -4,35 +4,36 @@
 
   <h3>作品詳細</h3></br>
 
-  <%= image_tag @work.image, size: "200x200" %></br>
+   作品名：<%= @work.work %></br>
+   <%= image_tag @work.image, size: "200x200" %></br>
+   ユーザー：
+   <%= link_to user_path(@work.user.id) do %>
+     <%= @work.user.name %></br>
+   <% end %>
 
-  <%= link_to user_path(@work.user.id) do %>
-  <%= @work.user.name %></br>
-  <% end %>
+    ジャンル：<%= @work.genre %></br>
 
-  <%= @work.genre %></br>
+    作品説明：<%= @work.introduction %></br>
 
-  <%= @work.introduction %></br>
+    更新日：<%= @work.updated_at.strftime("%Y-%m-%D") %></br>
 
-  更新日：<%= @work.updated_at.strftime("%Y-%m-%D") %></br>
+   <% if @work.user == current_user %>
+    <%= link_to "編集・削除",edit_work_path(@work) %></br>
+   <% end %>
 
-  <% if @work.user == current_user %>
-  <%= link_to "編集・削除",edit_work_path(@work) %></br>
-  <% end %>
+   <%= link_to 'コメント投稿',work_comments_path(@work.id),method: :get %>
 
-  <%= link_to 'コメント投稿',work_comments_path(@work.id),method: :get %>
+   <h4>最新コメント</h4>
+    <% @comments.each do |comment| %>
+     <%= comment.user.name %></br>
+     <%= comment.comment %></br>
 
-  <h4>最新コメント</h4>
-   <% @comments.each do |comment| %>
-    <%= comment.user.name %></br>
-    <%= comment.comment %></br>
-
-    <% if comment.user.id == current_user.id %>
-     <%= link_to"削除",work_comment_path(@work.id,comment.id),method: :delete %>
-    <% else %>
-     <%= link_to"報告",new_report_path %>
-    <% end %>
-    <% end %>
+     <% if comment.user.id == current_user.id %>
+      <%= link_to"削除",work_comment_path(@work.id,comment.id),method: :delete %>
+     <% else %>
+      <%= link_to"報告",new_report_path %>
+     <% end %>
+     <% end %>
 
     </div>
    </div>

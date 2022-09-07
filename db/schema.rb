@@ -99,6 +99,7 @@ ActiveRecord::Schema.define(version: 2022_09_05_061827) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id", null: false
     t.integer "wrok_id", null: false
+    t.integer "comment_id", null: false
     t.text "report", null: false
   end
 

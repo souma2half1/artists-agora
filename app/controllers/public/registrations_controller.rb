@@ -5,12 +5,12 @@ class Public::RegistrationsController < Devise::RegistrationsController
   before_action :check_guest, only: [:destroy,:update]
 
   def after_sign_up_path_for(resource)
-    admin_admin_path
+   root_path
   end
 
   def check_guest
     if resource.email == 'guest@example.com'
-      redirect_to root_path, alert: 'ゲストユーザーの編集・削除はできません。'
+     redirect_to root_path, alert: 'ゲストユーザーの編集・削除はできません。'
     end
   end
 

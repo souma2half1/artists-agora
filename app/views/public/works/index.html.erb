@@ -20,6 +20,9 @@
             <% end %>
           <% end %>
             <%= work.favorites.count %>いいね</br>
+          <% if work.genre.present? %>
+            ジャンル：<%= work.genre %></br>
+          <% end %>
             作品名：<%= work.work %></br>
           <% end %>
 
