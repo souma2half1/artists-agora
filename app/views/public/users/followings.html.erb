@@ -13,11 +13,12 @@
           </tr>
         </thead>
        <tbody>
-         
+
           <% @users.each do |user| %>
           <tr>
             <td><%= user.name %></td>
             <td><%= user.introduction %></td>
+            
 
             <td>
               <% if user != current_user %>

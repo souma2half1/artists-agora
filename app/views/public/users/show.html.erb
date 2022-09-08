@@ -4,8 +4,11 @@
 
     <h2>ユーザーページ</h2></br>
       ユーザー：<%= @user.name %></br>
-      自己紹介</br>
-      <%= current_user.introduction %></br>
+
+      <% if @user.introduction.present? %>
+        自己紹介</br>
+        <%= @user.introduction %></br>
+      <% end %>
 
 
       <% if @user != current_user %>
