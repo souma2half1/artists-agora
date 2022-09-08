@@ -17,6 +17,10 @@ class User < ApplicationRecord
   has_one_attached :image
 
   validates :name, presence: true
+  
+  def is_followed_by?(user)
+    reverse_of_relationships.find_by(following_id: user.id).present?
+  end
 
   def already_favorited?(work)
     self.favorites.exists?(work_id: work.id)

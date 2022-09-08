@@ -8,10 +8,22 @@
       <%= current_user.introduction %></br>
 
 
-      <%= link_to"お気に入り",favorites_path %></br>
+      <% if @user != current_user %>
+        <% if @user.is_followed_by?(current_user) %>
+          <%= link_to user_relationships_path(@user),method: :delete do %>
+            <button class ="btn btn-danger">フォロー解除</button></br>
+          <% end %>
 
-      <%= link_to"フォロー",followings_user_path %></br>
-      <%= link_to"フォロワー",followers_user_path %></br>
+          <% else %>
+          　 <%= link_to user_relationships_path(@user),method: :post do %>
+              <button class ="btn btn-primary">フォロー</button></br>
+            <% end %>
+         <% end %>
+      <% end %>
+
+      <%= link_to"お気に入り",favorites_path %></br>
+      <%= link_to @user.followings.count, followings_user_path(@user) %>フォロー   </br>
+      <%= link_to @user.followers.count, followers_user_path(@user) %>フォロワー</br>
 
       <% if @user == current_user %>
        <%= link_to"マイページ編集",edit_user_path(current_user) %></br>

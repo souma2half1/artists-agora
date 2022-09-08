@@ -1,0 +1,44 @@
+  <div class = "container">
+    <div class = "row">
+        <div class = "col-md-12">
+
+    <h2>Followings</h2>
+
+    <table class = "table">
+        <thead>
+          <tr>
+            <th>ユーザー名</th>
+            <th>自己紹介</th>
+            <th>フォロー/フォロー解除</th>
+          </tr>
+        </thead>
+       <tbody>
+         
+          <% @users.each do |user| %>
+          <tr>
+            <td><%= user.name %></td>
+            <td><%= user.introduction %></td>
+
+            <td>
+              <% if user != current_user %>
+                <% if user.is_followed_by?(current_user) %>
+                  <%= link_to user_relationships_path(user),method: :delete do %>
+                    <button class ="btn btn-danger">フォロー解除</button></br>
+                  <% end %>
+
+                  <% else %>
+                    <%= link_to user_relationships_path(user),method: :post do %>
+                      <button class ="btn btn-primary">フォロー</button></br>
+                     <% end %>
+                 <% end %>
+              <% end %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+        </table>
+
+
+        </div>
+    </div>
+  </div>

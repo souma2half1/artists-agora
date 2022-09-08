@@ -1,5 +1,6 @@
 class Public::UsersController < ApplicationController
 
+
   def show
    @user = User.find(params[:id])
    @image = @user.image
@@ -31,13 +32,13 @@ class Public::UsersController < ApplicationController
   end
 
   def followings
-    #user = User.find(params[:id])
-    #@users = user.followings
+    user = User.find(params[:id])
+    @users = user.followings
   end
 
   def followers
-    #user = User.find(params[:id])
-    #user = user.followers
+    user = User.find(params[:id])
+    @users = user.followers
   end
 
   private
