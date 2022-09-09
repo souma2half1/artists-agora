@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   root 'public/homes#top'
+  
 
   #ユーザー用
   devise_for :users,skip: [:passwords], controllers: {
@@ -11,8 +12,10 @@ Rails.application.routes.draw do
  scope module: :public do
   #ここにpublicのルート
 
-  post '/homes/guest_sign_in', to: 'homes#new_guest'
+   post '/homes/guest_sign_in', to: 'homes#new_guest'
    get 'users/unsubscribe'=> 'users#unsubscribe',as: "unsubscribe"
+   get 'search' => 'searches#search'
+   
   resources :users do
    resource :relationships, only:[:create,:destroy]
    get :followings, on: :member

@@ -7,7 +7,7 @@
 
   第<%= i %>位
 
-      ユーザー：<%= @favorites.work.user.name %></br>
+      ユーザー：<%#= @favorites.work.user.name %></br>
 
         <%= link_to work_path(work.id) do %>
             <%= image_tag @favorites.work.image, size: "150x150" %></br>
@@ -28,10 +28,10 @@
 
 
 
-  <% end %>
+  <%# end %>
 
 <h2>コメント数ランキング</h2>
-  <% @comments.each.with_index(1) do |post, i| %>
+  <%# @comments.each.with_index(1) do |post, i| %>
 
   第<%= i %>位
       ユーザー：<%= @comments.work.user.name %></br>
@@ -54,7 +54,7 @@
         作品名：<%= work.work %></br>
 
 
-   <% end %>
+   <%# end %>
     </div>
   </div>
 </div>

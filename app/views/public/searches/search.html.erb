@@ -1,0 +1,40 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-6">
+
+
+
+<h2>検索結果</h2>
+
+<table class="table table-hover table-inverse">
+
+
+  <% if @range == "User" %>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.name %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  <% else %>
+   
+
+    <tbody>
+      <% @works.each do |work| %>
+        <tr>
+          <td><%= work.work %></td>
+          <td><%= link_to work_path(work.id) do %>
+            <%= image_tag work.image, size: "150x150" %></br>
+          <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  <% end %>
+</table>
+
+
+      </div>
+    </div>
+  </div>
