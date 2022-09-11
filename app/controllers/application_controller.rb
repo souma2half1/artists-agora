@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   def application
-  @image = current_user.image
+   @image = current_user.image
   end
   
 

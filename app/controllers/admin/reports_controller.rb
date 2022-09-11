@@ -4,9 +4,9 @@ class Admin::ReportsController < ApplicationController
     @reports = Report.all
   end
 
-  def delete
+  def destroy
     @report = Report.find(params[:id])
-    @report.destroy
+    @report.delete
     redirect_to admin_reports_path
   end
 end

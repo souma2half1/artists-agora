@@ -7,7 +7,7 @@
     <table class = "table">
         <thead>
           <tr>
-            <th>ユーザー名</th>
+            <th>通報を送信したユーザー</th>
             <th>通報されたコメント</th>
             <th>理由</th>
             <th></th>
@@ -17,9 +17,9 @@
           <% @reports.each do |report| %>
           <tr>
             <td><%= report.user.name %></td>
-            <td><%= report.comment %></td>
+            <td><%= report.comment.comment %></td>
             <td><%= report.report %></td>
-            <td><%=  link_to"削除する" ,work_comment_path(work.id),method: :delete%></td>
+            <td><%=  link_to"削除する" ,admin_report_path(report.id),method: :delete%></td>
           </tr>
           <% end %>
         </tbody>

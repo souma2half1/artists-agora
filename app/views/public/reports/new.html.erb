@@ -6,8 +6,10 @@
 
   <p>理由</p>
 
-  <%= form_with model:@report,url: reports_path,method: :post do |f| %>
+  <%= form_with model:[@work, @comment, @report] do |f| %>
    <%= f.text_field :report %>
+   <%= f.hidden_field :work_id, value: @work.id %>
+   <%= f.hidden_field :comment_id, value: @comment.id %>
    <%= f.submit"送信" %>
   <% end %>
 

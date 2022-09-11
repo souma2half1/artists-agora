@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   root 'public/homes#top'
-  
+
 
   #ユーザー用
   devise_for :users,skip: [:passwords], controllers: {
@@ -14,8 +14,8 @@ Rails.application.routes.draw do
 
    post '/homes/guest_sign_in', to: 'homes#new_guest'
    get 'users/unsubscribe'=> 'users#unsubscribe',as: "unsubscribe"
-   get 'search' => 'searches#search'
-   
+   get 'search' => 'searches#index'
+
   resources :users do
    resource :relationships, only:[:create,:destroy]
    get :followings, on: :member
@@ -23,10 +23,11 @@ Rails.application.routes.draw do
   end
   resources :works do
    resource :favorites,     only: [:create,:destroy]
-   resources :comments,      only: [:index,:create,:destroy]
+   resources :comments,      only: [:index,:create,:destroy] do
+    resources :reports,       only: [:new,:create]
+   end
   end
   resources :favorites,      only: [:index]
-  resources :reports,       only: [:new,:create]
   resources :ranks,         only: [:index]
   resources :follows,       only: [:index,:create,:destroy]
 
@@ -40,6 +41,7 @@ Rails.application.routes.draw do
  namespace :admin do
    #ここにadminのルート
    get 'admin' => 'homes#top'
+   get 'search' => 'searches#index'
 
    resources :reports,      only: [:index,:destroy]
    resources :works

@@ -1,6 +1,6 @@
-class Public::SearchesController < ApplicationController
+class Admin::SearchesController < ApplicationController
 
-  before_action :authenticate_user!
+ before_action :authenticate_admin!
 
   def index
 
@@ -15,6 +15,5 @@ class Public::SearchesController < ApplicationController
     end
 
   end
-
 
 end

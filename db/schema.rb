@@ -73,20 +73,6 @@ ActiveRecord::Schema.define(version: 2022_09_05_061827) do
     t.integer "user_id", null: false
   end
 
-  create_table "genres", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "work_id", null: false
-    t.string "genre"
-  end
-
-  create_table "nices", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_id", null: false
-    t.integer "work_id", null: false
-  end
-
   create_table "relationships", force: :cascade do |t|
     t.integer "following_id", null: false
     t.integer "follower_id", null: false
@@ -98,7 +84,7 @@ ActiveRecord::Schema.define(version: 2022_09_05_061827) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id", null: false
-    t.integer "wrok_id", null: false
+    t.integer "work_id", null: false
     t.integer "comment_id", null: false
     t.text "report", null: false
   end
