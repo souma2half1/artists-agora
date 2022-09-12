@@ -3,14 +3,15 @@
      <div class = "col-md-12">
 
 <h2>いいね数ランキング</h2>
-  <% @favorites.each.with_index(1) do |post, i| %>
-
+<ul class="card-wrapper">
+  <% @favorites_works.each.with_index(1) do |work, i| %>
+  <li>
   第<%= i %>位
 
-      ユーザー：<%= @favorites.work.user.name %></br>
+      ユーザー：<%= work.user.name %></br>
 
         <%= link_to work_path(work.id) do %>
-            <%= image_tag @favorites.work.image, size: "150x150" %></br>
+            <%= image_tag work.image, size: "150x150" %></br>
         <% end %>
 
         <% if user_signed_in? %>
@@ -25,19 +26,18 @@
           ジャンル：<%= work.genre %></br>
         <% end %>
           作品名：<%= work.work %></br>
-
-
-
+   </li>
   <% end %>
-
-<h2>コメント数ランキング</h2>
-  <% @comments.each.with_index(1) do |post, i| %>
-
+</ul>
+<h2 class="mt-4">コメント数ランキング</h2>
+<ul class="card-wrapper">
+  <% @comments_works.each.with_index(1) do |work, i| %>
+  <li>
   第<%= i %>位
-      ユーザー：<%= @comments.work.user.name %></br>
+      ユーザー：<%= work.user.name %></br>
 
       <%= link_to work_path(work.id) do %>
-          <%= image_tag @comments.work.image, size: "150x150" %></br>
+          <%= image_tag work.image, size: "150x150" %></br>
       <% end %>
 
       <% if user_signed_in? %>
@@ -52,9 +52,11 @@
         ジャンル：<%= work.genre %></br>
       <% end %>
         作品名：<%= work.work %></br>
-
+  </li>
 
    <% end %>
+  </ul>
+
     </div>
   </div>
 </div>

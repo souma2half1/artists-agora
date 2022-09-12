@@ -27,6 +27,7 @@ Rails.application.routes.draw do
     resources :reports,       only: [:new,:create]
    end
   end
+  
   resources :favorites,      only: [:index]
   resources :ranks,         only: [:index]
   resources :follows,       only: [:index,:create,:destroy]

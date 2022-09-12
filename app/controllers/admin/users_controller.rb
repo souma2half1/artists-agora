@@ -7,12 +7,16 @@ class Admin::UsersController < ApplicationController
   def update
    @user = User.find(params[:id])
    @user.update(user_params)
-   redirect_to admmin_admin_path(current_user), notice: 'ユーザー情報を更新しました'
+   redirect_to admin_admin_path, notice: 'ユーザー情報を更新しました'
   end
 
   def destroy
     user = User.find(params[:id])
-    user.delete
+    user.destroy
     redirect_to admin_admin_path
+  end
+
+  def user_params
+    params.require(:user).permit(:image,:name,:introduction,:email)
   end
 end

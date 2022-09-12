@@ -4,20 +4,7 @@
 
         <h2>最新投稿一覧</h2></br>
           <div>
-            <% @works.each do |work| %>
-              ユーザー：<%= work.user.name %></br>
-              <%= link_to edit_work_path(work.id) do %>
-               <%= image_tag work.image, size: "150x150" %></br>
-              <% end %>
-               <%= work.favorites.count %>いいね</br>
-              <% if work.genre.present? %>
-               ジャンル：<%= work.genre %></br>
-              <% end %>
-               作品名：<%= work.work %></br>
-              <% end %>
-
-              <%= paginate @works %>
-
+           <%= render 'common/time_line', works: @works %>
            </div>
      </div>
     </div>

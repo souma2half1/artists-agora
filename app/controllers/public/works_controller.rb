@@ -2,7 +2,6 @@ class Public::WorksController < ApplicationController
 
   def index
     @works = Work.page(params[:page])
-    #@comments = @work.comments.all
   end
 
   def new
@@ -38,7 +37,7 @@ class Public::WorksController < ApplicationController
 
   def destroy
    @work = Work.find(params[:id])
-   @work.delete
+   @work.destroy
    redirect_to works_path
   end
 

@@ -1,10 +1,10 @@
   <div class = "container">
     <div class = "row">
       <div class = "col-md-12">
-      
-      
-      <h>ユーザー一覧</h>
-      
+
+
+      <h>ユーザー</h>
+
       <table class = "table">
         <thead>
           <tr>
@@ -14,7 +14,7 @@
             <th>メールアドレス</th>
           </tr>
         </thead>
-      
+
         <tbody>
           <% @users.each do |user| %>
           <tr>
@@ -27,9 +27,8 @@
         </tbody>
         </table>
         <%= paginate @users %>
-      
+
         </div>
       </div>
     </div>
-    
-    
+
