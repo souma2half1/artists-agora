@@ -2,8 +2,15 @@
  <div class="row">
   <div class="col-6">
 
-    <h2>ユーザーページ</h2></br>
-      ユーザー：<%= @user.name %></br>
+      <% if @user == current_user %>
+        <h2>マイページ</h2></br>
+      <% end %>
+
+      <% if @user != current_user %>
+        <h2>ユーザーページ</h2></br>
+         ユーザー：<%= @user.name %></br>
+      <% end %>
+
 
       <%= image_tag @user.image, size: "150x150" %></br>
 
@@ -34,35 +41,7 @@
        <%= link_to"マイページ編集",edit_user_path(current_user) %></br>
       <% end %>
 
-    <div>
-      <最新投稿></br>
-      投稿数  <%= @works.count %></br>
-      <% @works.each do |work| %>
-
-          <%= link_to work_path(work.id) do %>
-             <%= image_tag work.image, size: "150x150" %></br>
-           <% end %>
-
-          <% if user_signed_in? %>
-            <% if current_user.already_favorited?(work) %>
-              <%= link_to"❤", work_favorites_path(work.id), method: :delete %></br>
-            <% else %>
-              <%= link_to"♡", work_favorites_path(work.id), method: :post %>
-            <% end %>
-          <% end %>
-
-             <%= work.favorites.count %>いいね</br>
-
-           <% if work.genre.present? %>
-            ジャンル：<%= work.genre %></br>
-           <% end %>
-
-             作品名：<%= work.work %></br>
-
-      <% end %>
-
-    <%= paginate @works %>
-    </div>
+    <%= render 'common/latest_post' ,works: @works %>
 
     </div>
    </div>
