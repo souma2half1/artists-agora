@@ -1,18 +1,20 @@
-<div class="container mt-5">
- <div class="row">
-  <div class="col-6">
+<div class = "container mt-5">
+ <div class = "row">
+  <div class = "col-6">
 
-      <% if @user == current_user %>
+       <% if @user == current_user %>
         <h2>マイページ</h2></br>
-      <% end %>
+        プロフィール画像<br>
+        <% end %>
 
       <% if @user != current_user %>
         <h2>ユーザーページ</h2></br>
          ユーザー：<%= @user.name %></br>
       <% end %>
 
-
-      <%= image_tag @user.image, size: "150x150" %></br>
+      <div class = "m-3">
+        <%= image_tag @user.image, size: "150x150" %></br>
+      </div>
 
       <% if @user.introduction.present? %>
         自己紹介</br>

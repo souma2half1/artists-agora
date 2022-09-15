@@ -37,7 +37,7 @@ class Public::WorksController < ApplicationController
 
   def destroy
    @work = Work.find(params[:id])
-   @work.destroy
+   @work.delete
    redirect_to works_path
   end
 

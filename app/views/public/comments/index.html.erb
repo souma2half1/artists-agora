@@ -2,32 +2,51 @@
    <div class="row">
      <div class="col-6">
 
- <h2>コメント一覧</h2>
+     <h2>コメント一覧</h2></br>
 
-  <% @comments.each do |comment| %>
-   <%= comment.user.name %></br>
-   <%= comment.work.work %></br>
-   <%= image_tag @work.image, size: "150x150" %></br>
-   <%= comment.comment %></br>
+      <div class = "mt-3">
+        
+
+        <% if @comments.empty? %>
+        
+           ユーザー：<%= @work.user.name %></br>
+          <%= image_tag @work.image, size: "200x200" %></br>
+        <% else %>
+          <% @comments.each do |comment| %>
+           ユーザー：<%= comment.user.name %></br>
+           <%= image_tag @work.image, size: "200x200" %></br>
+           作品名：<%= comment.work.work %></br>
+        
+      </div>
 
 
-    <% if comment.user.id == current_user.id %>
-    <%= link_to"削除",work_comment_path(@work.id,comment.id),method: :delete %>
-    <% else %>
-    <%= link_to"報告",new_report_path %>
+      <div class = "comment-card">
+        <%= comment.user.name %>
+        <%= image_tag comment.user.image, size: "50x50" %>
+        <%= comment.comment %>
+      </div>
+      <div>
+       <% if comment.user.id == current_user.id %>
+        <%= link_to"コメントを削除",work_comment_path(@work.id,comment.id),method: :delete %>
+       <% else %>
+        <%= link_to"コメントを管理者に報告",new_report_path %>
+       <% end %>
+      </div>
     <% end %>
+     <% end %>
+     <h3>コメント</h3></br>
+     <div>
+       <%= form_with model:[@work,@comment],url: work_comments_path,method: :post do |f| %>
 
-  <% end %>
+       <%= f.label :"コメントする" %>
+       <%= f.text_field :comment %>
+
+       <%= f.submit "投稿" %>
+      <% end %>
+     </div>
 
 
- <%= form_with model:[@work,@comment],url: work_comments_path,method: :post do |f| %>
-
-  <%= f.label :"コメントする" %>
-  <%= f.text_field :comment %></br>
-
-  <%= f.submit "投稿" %>
- <% end %>
-
+      <%= paginate @comments %>
      </div>
     </div>
    </div>

@@ -3,11 +3,13 @@
     <% works.each do |work| %>
       <li class = "post-card">
         ユーザー：<%= work.user.name %></br>
-   
+
         <%= link_to work_path(work.id) do %>
-          <%= image_tag work.image, size: "150x150" %></br>
+          <%= image_tag work.image, size: "200x200" %></br>
         <% end %>
- 
+
+       作品名：<%= work.work %></br>
+
         <% if user_signed_in? %>
             <% if current_user.already_favorited?(work) %>
               <%= link_to"❤", work_favorites_path(work.id), method: :delete %></br>
@@ -17,15 +19,15 @@
         <% end %>
 
         <%= work.favorites.count %>いいね</br>
-     
+
         <% if work.genre.present? %>
           ジャンル：<%= work.genre %></br>
         <% end %>
-      
-          作品名：<%= work.work %></br>
-        </li>
+
+
+
     <% end %>
-    
+     </li>
     <%= paginate works %>
 
 </ul>

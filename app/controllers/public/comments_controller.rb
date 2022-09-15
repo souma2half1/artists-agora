@@ -3,7 +3,7 @@ class Public::CommentsController < ApplicationController
   def index
     @work = Work.find(params[:work_id])
     @comment = Comment.new
-    @comments = @work.comments
+    @comments = @work.comments.page(params[:page])
   end
 
   def create

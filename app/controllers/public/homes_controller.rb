@@ -5,7 +5,7 @@ class Public::HomesController < ApplicationController
      user.password = SecureRandom.urlsafe_base64
    end
    sign_in user
-   redirect_to works_path #notice: "ゲストユーザーとしてログインしました"
+   redirect_to works_path ,notice: "ゲストユーザーとしてログインしました"
   end
 
 end
