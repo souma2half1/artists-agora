@@ -21,12 +21,16 @@
 
 
     <h1>Artist's Agora</h1></br>
-    <% if user_signed_in? %>
-      <%= image_tag current_user.image, size: "70x70" %>
-      <p><%= current_user.name %></p>
-    <% end %>
 
-        <ul class="navbar-nav ml-auto">
+        <div class = "ml-5">
+          <% if user_signed_in? %>
+            <%= current_user.name %>
+            <%= image_tag current_user.image, size: "70x70" %>
+          <% end %>
+        </div>
+
+
+        <ul class = "navbar-nav ml-auto">
           <% if admin_signed_in? %>
             <%= render 'common/search_bar'  %>
             <li  class="nav-item"> <%= link_to"トップ",admin_admin_path, class: "nav-link" %> </li>
@@ -44,7 +48,7 @@
             <li  class="nav-item"> <%= link_to"ログアウト",  destroy_user_session_path,method: :delete, class: "nav-link" %> </li>
 
           <% else %>
-            <li  class="nav-item"> <%= link_to"ログイン",new_user_session_path, class: "nav-link" %> </li>
+            <li  class = "nav-item"> <%= link_to"ログイン",new_user_session_path, class: "nav-link" %> </li>
 
           <% end %>
 
