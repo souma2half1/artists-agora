@@ -13,7 +13,7 @@
 
   <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #BD9AE0;">
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -22,10 +22,10 @@
 
     <h1>Artist's Agora</h1></br>
 
-        <div class = "ml-5">
+        <div class="ml-5">
           <% if user_signed_in? %>
-            <%= current_user.name.truncate(10) %>
             <%= image_tag current_user.image, size: "70x70" if current_user.image.present? %>
+            <small><%= current_user.name.truncate(10) %></small>
           <% end %>
         </div>
 

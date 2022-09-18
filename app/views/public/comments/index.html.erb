@@ -37,7 +37,7 @@
           <%= link_to"コメントを削除",work_comment_path(@work.id,comment.id),method: :delete %>
         </button>
        <% else %>
-        <%= link_to"報告",new_report_path %>
+        <%= link_to"報告",new_work_comment_report_path(@work, comment) %>
        <% end %>
       </div>
     <% end %>

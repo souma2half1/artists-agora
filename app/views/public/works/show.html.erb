@@ -10,7 +10,7 @@
             <% end %>
 
 
-            <%= image_tag @work.image, size: "200x200" %></br>
+            <%= image_tag @work.image, class: 'work-image' %></br>
 
             作品名：<%= @work.work %></br>
 
@@ -35,13 +35,18 @@
 
       <h4>最新コメント</h4>
 
+      <% if @comments.count > 0 %>
         <div class="card-wrapper">
-          <div class="comment-card">
+          <div class="d-block comment-card">
             <% @comments.each do |comment| %>
-
-            <%= comment.user.name.truncate(14) %></br>
-            <%= image_tag comment.user.image, size: "75x75" %></br>
-            <%= comment.comment.truncate(14) %></br>
+              <div class="text-center">
+                <%= image_tag comment.user.image, size: "75x75" %>
+              </div>
+              <div class="text-center">
+                <small><%= comment.user.name.truncate(14) %></small>
+              </div>
+              <hr>
+              <%= comment.comment.truncate(14) %>
           </div>
         </div>
 
@@ -54,6 +59,7 @@
             <% end %>
 
             <%= paginate @comments %>
+      <% end %>
 
     </div>
    </div>

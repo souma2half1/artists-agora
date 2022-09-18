@@ -39,12 +39,12 @@
 
       <%= link_to @user.followers.count, followers_user_path(@user) %>フォロワー</br>
 
-      <button type="button" class="btn btn-warning">
+      <button type="button" class="btn btn-warning mt-3">
         <%= link_to"お気に入り",favorites_path %></br>
       </button>
 
       <% if @user == current_user %>
-       <button type="button" class="btn btn-success">
+       <button type="button" class="btn btn-success mt-3">
          <%= link_to"マイページ編集",edit_user_path(current_user) %></br>
        </button>
       <% end %>
