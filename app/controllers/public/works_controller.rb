@@ -10,11 +10,11 @@ class Public::WorksController < ApplicationController
 
   def show
     @work = Work.find(params[:id])
-    @comments = @work.comments
+    @comments = @work.comments.page(params[:page])
   end
 
   def edit
-    @user = User.find(params[:id])
+    @user = current_user
     @work = Work.find(params[:id])
   end
 

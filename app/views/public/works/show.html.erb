@@ -4,22 +4,23 @@
 
      <h3>作品詳細</h3></br>
 
-     ユーザー：
-      <%= link_to user_path(@work.user.id) do %>
-        <%= @work.user.name %></br>
-      <% end %>
+            ユーザー：
+            <%= link_to user_path(@work.user.id) do %>
+              <%= @work.user.name %></br>
+            <% end %>
 
 
-      <%= image_tag @work.image, size: "200x200" %></br>
+            <%= image_tag @work.image, size: "200x200" %></br>
 
-      作品名：<%= @work.work %></br>
+            作品名：<%= @work.work %></br>
 
 
-       ジャンル：<%= @work.genre %></br>
+             ジャンル：<%= @work.genre %></br>
 
-       作品説明：<%= @work.introduction %></br>
+             作品説明：<%= @work.introduction %></br>
 
-       更新日：<%= @work.updated_at.strftime("%Y-%m-%D") %></br>
+             更新日：<%= @work.updated_at.strftime("%Y-%m-%D") %></br>
+
 
       <% if @work.user == current_user %>
        <button type="button" class="btn btn-success">
@@ -27,26 +28,32 @@
        </button>
       <% end %>
 
-      <button type="button" class="btn btn-info">
-        <%= link_to 'コメント',work_comments_path(@work.id),method: :get %>
+      <button type="button" class="btn btn-info m-3">
+        <%= link_to 'コメント', work_comments_path(@work.id), method: :get %>
       </button>
 
 
       <h4>最新コメント</h4>
 
-        <div class = "comment-card">
-         <% @comments.each do |comment| %>
-          <%= comment.user.name %></br>
-          <%= image_tag comment.user.image, size: "75x75" %></br>
-          <%= comment.comment %></br>
+        <div class="card-wrapper">
+          <div class="comment-card">
+            <% @comments.each do |comment| %>
+
+            <%= comment.user.name.truncate(14) %></br>
+            <%= image_tag comment.user.image, size: "75x75" %></br>
+            <%= comment.comment.truncate(14) %></br>
+          </div>
         </div>
 
-        <% if comment.user.id == current_user.id %>
-         <%= link_to"削除",work_comment_path(@work.id,comment.id),method: :delete %>
-        <% else %>
-         <%= link_to"報告", new_work_comment_report_path(@work,comment)  %>
-        <% end %>
-        <% end %>
+
+                <% if comment.user.id == current_user.id %>
+                 <%= link_to"削除",work_comment_path(@work.id,comment.id),method: :delete %>
+                <% else %>
+                 <%= link_to"報告", new_work_comment_report_path(@work,comment)  %>
+                <% end %>
+            <% end %>
+
+            <%= paginate @comments %>
 
     </div>
    </div>

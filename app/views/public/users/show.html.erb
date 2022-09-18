@@ -1,11 +1,11 @@
-<div class = "container mt-5">
- <div class = "row">
-  <div class = "col-6">
+<div class="container mt-5">
+ <div class="row">
+  <div class= "col-12">
 
-       <% if @user == current_user %>
+      <% if @user == current_user %>
         <h2>マイページ</h2></br>
         プロフィール画像<br>
-        <% end %>
+      <% end %>
 
       <% if @user != current_user %>
         <h2>ユーザーページ</h2></br>
@@ -13,7 +13,7 @@
       <% end %>
 
       <div class = "m-3">
-        <%= image_tag @user.image, size: "150x150" %></br>
+        <%= image_tag @user.image, size: "200x200" if current_user.image.present? %></br>
       </div>
 
       <% if @user.introduction.present? %>
@@ -25,25 +25,33 @@
       <% if @user != current_user %>
         <% if @user.is_followed_by?(current_user) %>
           <%= link_to user_relationships_path(@user),method: :delete do %>
-            <button class ="btn btn-danger">フォロー解除</button></br>
+            <button class="btn btn-danger m-3">フォロー解除</button></br>
           <% end %>
 
           <% else %>
           　 <%= link_to user_relationships_path(@user),method: :post do %>
-              <button class ="btn btn-primary">フォロー</button></br>
+              <button class="btn btn-primary m-3">フォロー</button></br>
             <% end %>
          <% end %>
       <% end %>
 
-      <%= link_to"お気に入り",favorites_path %></br>
       <%= link_to @user.followings.count, followings_user_path(@user) %>フォロー  </br>
+
       <%= link_to @user.followers.count, followers_user_path(@user) %>フォロワー</br>
 
+      <button type="button" class="btn btn-warning">
+        <%= link_to"お気に入り",favorites_path %></br>
+      </button>
+
       <% if @user == current_user %>
-       <%= link_to"マイページ編集",edit_user_path(current_user) %></br>
+       <button type="button" class="btn btn-success">
+         <%= link_to"マイページ編集",edit_user_path(current_user) %></br>
+       </button>
       <% end %>
 
-    <%= render 'common/latest_post' ,works: @works %>
+
+          <%= render 'common/latest_post' ,works: @works %>
+
 
     </div>
    </div>

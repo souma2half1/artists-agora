@@ -2,16 +2,27 @@
     <div class="row">
       <div class="col-6">
 
-  <h2>コメントを管理者に報告</h2>
+          <h2>コメントを管理者に報告</h2>
+              <div class="mt-5 mb-5">
+                 <h>報告理由（例）</h>
+                  <ul>
+                      <li>他者を攻撃している</li>
 
-  <p>理由</p>
+                      <li>犯罪を助長している</li>
+                  </ul>
+              </div>
 
-  <%= form_with model:[@work, @comment, @report] do |f| %>
-   <%= f.text_field :report %>
-   <%= f.hidden_field :work_id, value: @work.id %>
-   <%= f.hidden_field :comment_id, value: @comment.id %>
-   <%= f.submit"送信" %>
-  <% end %>
+              <%= form_with model:[@work, @comment, @report] do |f| %>
+                 <%= f.text_area :report ,size: "30x20" %>
+
+                 <%= f.hidden_field :work_id, value: @work.id %>
+
+                 <%= f.hidden_field :comment_id, value: @comment.id %>
+
+                 <%= f.submit"送信" %>
+              <% end %>
+
+
 
     </div>
    </div>

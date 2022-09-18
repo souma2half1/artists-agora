@@ -1,68 +1,80 @@
-<div class = "container">
-  <div class = "row">
-     <div class = "col-md-12">
+<div class="container">
+  <div class="row">
+     <div class="col-md-12">
 
-      <h2>いいね数ランキング</h2>
+
+    <h2>いいね数ランキング</h2>
+
+       <div class = "row">
 
         <% @favorites_works.each.with_index(1) do |work, i| %>
 
-        第<%= i %>位
-          <ul class="card-wrapper">
-           <li>
-              ユーザー：<%= work.user.name %></br>
 
-                <%= link_to work_path(work.id) do %>
-                    <%= image_tag work.image, size: "150x150" %></br>
-                <% end %>
+            <ul class="card-wrapper">
+             <li>
+               第<%= i %>位
+               <div class="post-card mr-5 ">
+                 ユーザー：<%= work.user.name.truncate(14) %></br>
 
-                作品名：<%= work.work %></br>
-
-                <% if user_signed_in? %>
-                  <% if current_user.already_favorited?(work) %>
-                    <%= link_to"❤", work_favorites_path(work.id), method: :delete %></br>
-                  <% else %>
-                    <%= link_to"♡", work_favorites_path(work.id), method: :post %>
+                  <%= link_to work_path(work.id) do %>
+                      <%= image_tag work.image, size: "200x200" %></br>
                   <% end %>
-                <% end %>
-                  <%= work.favorites.count %>いいね</br>
-                <% if work.genre.present? %>
-                  ジャンル：<%= work.genre %></br>
-                <% end %>
-              </li>
-           </ul>
 
+                  作品名：<%= work.work.truncate(14) %></br>
+
+                  <% if user_signed_in? %>
+                    <% if current_user.already_favorited?(work) %>
+                      <%= link_to"❤", work_favorites_path(work.id), method: :delete %></br>
+                    <% else %>
+                      <%= link_to"♡", work_favorites_path(work.id), method: :post %>
+                    <% end %>
+                  <% end %>
+                    <%= work.favorites.count %>いいね</br>
+                  <% if work.genre.present? %>
+                    ジャンル：<%= work.genre.truncate(14) %></br>
+                  <% end %>
+               </div>
+
+                </li>
+             </ul>
         <% end %>
+      </div>
 
-      <h2 class="mt-4">コメント数ランキング</h2>
 
-        <% @comments_works.each.with_index(1) do |work, i| %>
+    <h2 class="mt-4">コメント数ランキング</h2>
 
-        第<%= i %>位
-        <ul class="card-wrapper">
-          <li>
-            ユーザー：<%= work.user.name %></br>
+      <div class="row">
 
-            <%= link_to work_path(work.id) do %>
-                <%= image_tag work.image, size: "150x150" %></br>
-            <% end %>
+           <% @comments_works.each.with_index(1) do |work, i| %>
+             <ul class="card-wrapper">
+               <li>
+                  第<%= i %>位
 
-            作品名：<%= work.work %></br>
+                    <div class="post-card mr-5">
+                        ユーザー：<%= work.user.name.truncate(14) %></br>
 
-            <% if user_signed_in? %>
-              <% if current_user.already_favorited?(work) %>
-                <%= link_to"❤", work_favorites_path(work.id), method: :delete %></br>
-              <% else %>
-                <%= link_to"♡", work_favorites_path(work.id), method: :post %>
-              <% end %>
-            <% end %>
-              <%= work.favorites.count %>いいね</br>
-            <% if work.genre.present? %>
-              ジャンル：<%= work.genre %></br>
-            <% end %>
-          </li>
-        </ul>
+                      <%= link_to work_path(work.id) do %>
+                          <%= image_tag work.image, size: "200x200" %></br>
+                      <% end %>
+
+                      作品名：<%= work.work.truncate(14) %></br>
+
+                      <% if user_signed_in? %>
+                        <% if current_user.already_favorited?(work) %>
+                          <%= link_to"❤", work_favorites_path(work.id), method: :delete %></br>
+                        <% else %>
+                          <%= link_to"♡", work_favorites_path(work.id), method: :post %>
+                        <% end %>
+                      <% end %>
+                        <%= work.favorites.count %>いいね</br>
+                      <% if work.genre.present? %>
+                        ジャンル：<%= work.genre.truncate(14) %></br>
+                      <% end %>
+                      </div>
+                 </li>
+              </ul>
          <% end %>
-
+      </div>
 
     </div>
   </div>

@@ -3,6 +3,8 @@
 
 
 
+
+
 .card-wrapper {
     list-style: none;
     display: flex;
@@ -16,6 +18,17 @@
 .comment-card{
     border-style: solid;
     display: flex;
+    height: 200px;
+    width: 200px;
+
+}
+
+.btn-info a,.btn-danger a,.btn-primary a,.btn-success a{
+    color: white;
+}
+
+.btn-warning a{
+    color: black;
 }
 
 

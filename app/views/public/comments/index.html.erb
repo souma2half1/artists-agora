@@ -4,7 +4,7 @@
 
      <h2>コメント一覧</h2></br>
 
-      <div class = "mt-3">
+      <div class="mt-3">
 
 
         <% if @comments.empty? %>
@@ -12,16 +12,20 @@
            ユーザー：<%= @work.user.name %></br>
           <%= image_tag @work.image, size: "200x200" %></br>
 
-        <% else %>
+         <% else %>
           <% @comments.each do |comment| %>
            ユーザー：<%= comment.user.name %></br>
            <%= image_tag @work.image, size: "200x200" %></br>
            作品名：<%= comment.work.work %></br>
+           ジャンル：<%= @work.genre %></br>
+           作品説明：<%= @work.introduction %></br>
+           更新日：<%= @work.updated_at.strftime("%Y-%m-%D") %></br>
+
 
       </div>
 
 
-      <div class = "comment-card">
+      <div class="comment-card mt-5 mb-2">
         <%= comment.user.name %><br>
         <%= image_tag comment.user.image, size: "75x75" %></br>
         <%= comment.comment %></br>
@@ -39,14 +43,14 @@
     <% end %>
     <% end %>
 
-     <h3>コメント</h3></br>
+     <h3 class="mt-3">コメント</h3></br>
       <div>
         <%= form_with model:[@work,@comment],url: work_comments_path,method: :post do |f| %>
 
-        <%= f.label :"コメントする" %>
-        <%= f.text_field :comment %>
+        <%= f.label :"コメントする" %></br>
+        <%= f.text_area :comment,size: "30x10" %>
 
-        <%= f.submit "投稿" %>
+        <%= f.submit "投稿",class: "btn btn-success" %>
        <% end %>
       </div>
 

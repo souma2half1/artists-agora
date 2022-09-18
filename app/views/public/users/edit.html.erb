@@ -7,7 +7,8 @@
         <table>
   　　　　<tbody>
 
-    　　　　    <%= form_with model:@user,url: user_path,method: :patch do |f| %>
+    　　　　    <%= form_with model:@user,url: user_path,method: :patch, id: "patch" do |f| %>
+
             <tr>
              <td><%= f.label :"プロフィール画像" %></td>
              <td><%= f.file_field :image, accept: "image/*" , class: "form-controll" %></td>
@@ -20,7 +21,7 @@
 
             <tr>
               <td><%= f.label :"自己紹介" %></td>
-              <td><%= f.text_area :introduction %></td>
+              <td><%= f.text_area :introduction,size: "30x5" %></td>
             </tr>
 
             <tr>
@@ -29,7 +30,7 @@
             </tr>
 
             <tr>
-              <td><%= f.submit '変更を保存',class: "btn btn-primary mt-3 mb-3" %></td>
+              <td><%= f.submit '変更を保存',form: "patch", class: "btn btn-primary mt-3 mb-3" %></td>
             </tr>
 
 
