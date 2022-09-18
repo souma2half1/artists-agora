@@ -1,7 +1,7 @@
 <ul class="card-wrapper">
 
     <% works.each do |work| %>
-      <li class = "post-card">
+      <li class = "post-card" style="background-color: #CCE9FF" >
         ユーザー：<%= work.user.name.truncate(14) %></br>
 
         <%= link_to work_path(work.id) do %>
