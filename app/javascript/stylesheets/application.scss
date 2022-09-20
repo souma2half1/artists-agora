@@ -1,8 +1,12 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
 
-.top_bg{
-    // background-image: url("../images/scool_of_athens.jpeg")；
+.top-cover{
+    background-image: url("../images/school_of_athens.jpg");
+    background-size: cover;
+    background-position: 50% 80%;
+    width: 100%;
+    height: 98vh;
 }
 
 .comments_area{
@@ -17,6 +21,13 @@
     height: 200px;
     object-fit: cover;
 }
+
+.plofile-image{
+     width: auto;
+    height: 200px;
+    object-fit: cover;
+}
+
 
 .card-wrapper {
     list-style: none;
@@ -50,6 +61,3 @@
     width:200px;
 }
 
-.home{
-    background-image: artists_agora/app/assets/images/scool_of_athens;
-}

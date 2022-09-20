@@ -20,6 +20,9 @@ Rails.application.routes.draw do
    resource :relationships, only:[:create,:destroy]
    get :followings, on: :member
    get :followers,  on: :member
+   member do
+     resources :favorites,      only: [:index]
+   end
   end
   resources :works do
    resource :favorites,     only: [:create,:destroy]
@@ -27,8 +30,7 @@ Rails.application.routes.draw do
     resources :reports,       only: [:new,:create]
    end
   end
-  
-  resources :favorites,      only: [:index]
+
   resources :ranks,         only: [:index]
   resources :follows,       only: [:index,:create,:destroy]
 

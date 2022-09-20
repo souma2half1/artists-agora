@@ -12,8 +12,8 @@
          ユーザー：<%= @user.name %></br>
       <% end %>
 
-      <div class = "m-3">
-        <%= image_tag @user.image, size: "200x200" if current_user.image.present? %></br>
+      <div class="m-3">
+        <%= image_tag @user.image, class: 'work-image' if current_user.image.present? %></br>
       </div>
 
       <% if @user.introduction.present? %>
@@ -21,23 +21,9 @@
         <%= @user.introduction %></br>
       <% end %>
 
+      <%= link_to @user.followings.count, followings_user_path(@user) %>  フォロー  </br>
 
-      <% if @user != current_user %>
-        <% if @user.is_followed_by?(current_user) %>
-          <%= link_to user_relationships_path(@user),method: :delete do %>
-            <button class="btn btn-danger m-3">フォロー解除</button></br>
-          <% end %>
-
-          <% else %>
-          　 <%= link_to user_relationships_path(@user),method: :post do %>
-              <button class="btn btn-primary m-3">フォロー</button></br>
-            <% end %>
-         <% end %>
-      <% end %>
-
-      <%= link_to @user.followings.count, followings_user_path(@user) %>フォロー  </br>
-
-      <%= link_to @user.followers.count, followers_user_path(@user) %>フォロワー</br>
+      <%= link_to @user.followers.count, followers_user_path(@user) %>  フォロワー</br>
 
       <button type="button" class="btn btn-warning mt-3">
         <%= link_to"お気に入り",favorites_path %></br>
@@ -47,6 +33,20 @@
        <button type="button" class="btn btn-success mt-3">
          <%= link_to"マイページ編集",edit_user_path(current_user) %></br>
        </button>
+      <% end %>
+
+
+      <% if @user != current_user %>
+        <% if @user.is_followed_by?(current_user) %>
+          <%= link_to user_relationships_path(@user),method: :delete do %>
+            <button class="btn btn-danger mt-3">フォロー解除</button></br>
+          <% end %>
+
+          <% else %>
+          　 <%= link_to user_relationships_path(@user),method: :post do %>
+              <button class="btn btn-primary mt-3">フォロー</button></br>
+            <% end %>
+         <% end %>
       <% end %>
 
 

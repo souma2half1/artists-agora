@@ -1,7 +1,8 @@
 class Public::FavoritesController < ApplicationController
 
   def index
-   @works = current_user.favorites.page(params[:page])
+   @user = User.find(params[:id])
+   @works = @user.favorites.page(params[:page])
   end
 
   def create

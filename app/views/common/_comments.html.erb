@@ -1,0 +1,30 @@
+      <h4 class="mt-5 mb-3">最新コメント</h4>
+
+        <div class="card-wrapper">
+          <div class="d-block comment-card">
+            <% comments.each do |comment| %>
+              <div class="text-center">
+                <%= image_tag comment.user.image, size: "75x75" %>
+              </div>
+              <div class="text-center">
+                <small><%= comment.user.name.truncate(14) %></small>
+              </div>
+              <hr>
+              <%= comment.comment.truncate(14) %>
+          </div>
+        </div>
+
+
+      <% if comment.user.id == current_user.id %>
+        <button type="button" class="btn btn-warning mt-2">
+           <%= link_to"削除",work_comment_path(@work.id,comment.id),method: :delete %>
+         </button>
+       <% else %>
+          <button type="button" class="btn btn-danger mt-2">
+            <%= link_to"報告", new_work_comment_report_path(@work,comment)  %>
+          </button>
+       <% end %>
+      <% end %>
+
+      <%= paginate comments %>
+  

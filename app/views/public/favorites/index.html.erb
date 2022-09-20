@@ -5,30 +5,30 @@
        <h2>お気に入り投稿</h2>
 
             <ul class = "card-wrapper mt-3">
-              <li class = "post-card">
+              <li class = "post-card" style="background-color: #CCE9FF">
 
-                <% @works.each do |work| %>
+                <% @works.each do |art| %>
 
-                    ユーザー：<%= work.user.name %></br>
+                    ユーザー：<%= art.user.name.truncate(14) %></br>
 
-                    <%= link_to work_path(work.id) do %>
-                       <%= image_tag work.work.image, size: "200x200" %></br>
+                    <%= link_to work_path(art) do %>
+                       <%= image_tag art.work.image, size: "200x200" %></br>
                     <% end %>
 
-                    作品名：<%= work.work.work %></br>
+                    作品名：<%= art.work.work.truncate(14) %></br>
 
                     <% if user_signed_in? %>
-                      <% if current_user.already_favorited?(work) %>
-                        <%= link_to"❤", work_favorites_path(work.id), method: :delete %></br>
+                      <% if current_user.already_favorited?(art) %>
+                        <%= link_to"❤", work_favorites_path(art), method: :delete %></br>
                       <% else %>
-                        <%= link_to"♡", work_favorites_path(work.id), method: :post %>
+                        <%= link_to"♡", work_favorites_path(art), method: :post %>
                       <% end %>
                     <% end %>
 
-                      <%= work.work.favorites.count %>いいね</br>
+                      <%= art.work.favorites.count %>いいね</br>
 
-                     <% if work.work.genre.present? %>
-                     ジャンル：<%= work.work.genre %></br>
+                     <% if art.work.genre.present? %>
+                     ジャンル：<%= art.work.genre.truncate(14) %></br>
                      <% end %>
 
                 <% end %>

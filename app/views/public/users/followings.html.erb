@@ -2,7 +2,7 @@
     <div class = "row">
         <div class = "col-md-12">
 
-    <h2>Followings</h2>
+    <h2 class="m-3">Followings</h2>
 
     <table class = "table">
         <thead>
@@ -16,9 +16,12 @@
 
           <% @users.each do |user| %>
           <tr>
-            <td><%= user.name %></td>
+            <td><%= link_to user_path(user) do %>
+              <%= user.name %>
+            <% end %>
+            </td>
             <td><%= user.introduction %></td>
-            
+
 
             <td>
               <% if user != current_user %>

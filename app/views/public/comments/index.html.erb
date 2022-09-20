@@ -6,79 +6,33 @@
 
       <div class="mt-3 d-flex">
 
-
-        <% if @comments.empty? %>
         <div>
             ユーザー：<%= @work.user.name %></br>
-           <%= image_tag @work.image, size: "200x200" %></br>
-            作品名：<%= comment.work.work %></br>
+           <%= image_tag @work.image, class: 'work-image' %></br>
+            作品名：<%= @work.work %></br>
             ジャンル：<%= @work.genre %></br>
             作品説明：<%= @work.introduction %></br>
             更新日：<%= @work.updated_at.strftime("%Y-%m-%D") %></br>
         </div>
-         <% else %>
-         <div>
-            <% @comments.each do |comment| %>
-            ユーザー：<%= comment.user.name %></br>
-            <%= image_tag @work.image, size: "200x200" %></br>
-            作品名：<%= comment.work.work %></br>
-            ジャンル：<%= @work.genre %></br>
-            作品説明：<%= @work.introduction %></br>
-            更新日：<%= @work.updated_at.strftime("%Y-%m-%D") %></br>
 
-         </div>
 
-           <div class="ml-5">
+          <div class="ml-5">
             <%= form_with model:[@work,@comment],url: work_comments_path,method: :post do |f| %>
 
-            <%= f.label :"コメント投稿" %></br>
-            <%= f.text_area :comment,size: "30x10" %>
+              <%= f.label :"コメント投稿" %></br>
+              <%= f.text_area :comment,size: "30x10" %>
 
-            <%= f.submit "投稿",class: "btn btn-success" %>
-           <% end %>
-           </div>
+              <%= f.submit "投稿",class: "btn btn-success" %>
 
-      </div>
-      <hr>
-      <h3 class="mt-5">コメント</h3></br>
-
-      <% if @comments.count > 0 %>
-
-        <div class="card-wrapper">
-          <div class="d-block comment-card">
-            <% @comments.each do |comment| %>
-              <div class="text-center">
-                <%= image_tag comment.user.image, size: "75x75" %>
-              </div>
-              <div class="text-center">
-                <small><%= comment.user.name.truncate(14) %></small>
-              </div>
-              <hr>
-              <%= comment.comment.truncate(14) %>
+            <% end %>
           </div>
+
         </div>
+      <hr>
 
-
-       <% if comment.user.id == current_user.id %>
-         <button type="button" class="btn btn-warning mt-2">
-           <%= link_to"削除",work_comment_path(@work.id,comment.id),method: :delete %>
-         </button>
-       <% else %>
-          <button type="button" class="btn btn-danger mt-2">
-           <%= link_to"報告", new_work_comment_report_path(@work,comment)  %>
-          </button>
-       <% end %>
+     <% if @comments.count > 0 %>
+       <%= render 'common/comments', comments: @comments%>
      <% end %>
-
-            <%= paginate @comments %>
-      <% end %>
-
-
-    <% end %>
-    <% end %>
-
-
-
 
 
       <%= paginate @comments %>

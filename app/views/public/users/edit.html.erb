@@ -4,7 +4,7 @@
 
       <div class = "m-3">
         <h2>マイページ編集</h2>
-        <table>
+        <table class="table">
   　　　　<tbody>
 
     　　　　    <%= form_with model:@user,url: user_path,method: :patch, id: "patch" do |f| %>
@@ -39,7 +39,7 @@
           </tbody>
           </table>
 
-          <button type="button" class="btn btn-danger">
+          <button type="button" class="btn btn-danger mb-2">
             <%= link_to "アカウントを削除",unsubscribe_path %>
           </button>
 
