@@ -3,12 +3,12 @@
   <div class= "col-12">
 
       <% if @user == current_user %>
-        <h2>マイページ</h2></br>
+        <h2><i class="fa-solid fa-user"></i>マイページ</h2></br>
         プロフィール画像<br>
       <% end %>
 
       <% if @user != current_user %>
-        <h2>ユーザーページ</h2></br>
+        <h2><i class="fa-regular fa-user"></i>ユーザーページ</h2></br>
          ユーザー：<%= @user.name %></br>
       <% end %>
 
@@ -48,6 +48,7 @@
             <% end %>
          <% end %>
       <% end %>
+      <hr>
 
 
           <%= render 'common/latest_post' ,works: @works %>

@@ -7,6 +7,8 @@
     background-position: 50% 80%;
     width: 100%;
     height: 98vh;
+    color: #2857FA;
+    font-size: large;
 }
 
 .comments_area{
@@ -29,6 +31,9 @@
 }
 
 
+.wrapper_all{
+    display: flex;
+}
 .card-wrapper {
     list-style: none;
     display: flex;
@@ -42,8 +47,8 @@
 .comment-card{
     border-style: solid;
     display: flex;
-    height: 200px;
     width: 200px;
+    overflow-wrap: break-word;
 
 }
 

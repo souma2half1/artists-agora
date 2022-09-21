@@ -3,7 +3,7 @@
     <div class="col-6">
 
       <div class = "m-3">
-        <h2>マイページ編集</h2>
+        <h2><i class="fa-sharp fa-solid fa-user-pen"></i>マイページ編集</h2>
         <table class="table">
   　　　　<tbody>
 
@@ -42,6 +42,7 @@
           <button type="button" class="btn btn-danger mb-2">
             <%= link_to "アカウントを削除",unsubscribe_path %>
           </button>
+          <hr>
 
 
         <%= render 'common/latest_post' ,works: @works %>

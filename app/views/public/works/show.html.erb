@@ -1,8 +1,7 @@
 <div class="container mt-5">
-  <div class="row">
-    <div class="col-6">
 
-     <h3>作品詳細</h3></br>
+
+     <h3><i class="fa-solid fa-palette"></i>作品詳細</h3></br>
 
             ユーザー：
             <%= link_to user_path(@work.user.id) do %>
@@ -30,11 +29,11 @@
       <button type="button" class="btn btn-info m-3">
          <%= link_to 'コメント', work_comments_path(@work.id), method: :get %>
       </button>
+      <hr>
 
        <% if @comments.count > 0 %>
            <%= render 'common/comments', comments: @comments%>
        <% end %>
 
-    </div>
-   </div>
+
   </div>
