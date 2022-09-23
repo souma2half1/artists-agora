@@ -6,7 +6,7 @@
 
           <%= image_tag @work.image, size: "150x150" %>
 
-          <%= form_with model:@work,url: work_path(@work.id),method: :patch do |f| %>
+          <%= form_with model:@work,url: admin_work_path(@work.id),method: :patch do |f| %>
 
           <div class="field m-3">
              <%= f.label :"作品画像：" %><br>
@@ -35,11 +35,11 @@
            <% end %>
 
            <button type="button" class="btn btn-danger mt-2">
-            <%= link_to "作品削除", work_path(@work.id),method: :delete %>
+            <%= link_to "作品削除", admin_work_path(@work.id),method: :delete %>
           </button>
 
 
 
-     </div>
+      </div>
     </div>
-   </div>
+  </div>

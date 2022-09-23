@@ -23,13 +23,12 @@
                   作品名：<%= work.work.truncate(14) %></br>
 
                   <% if user_signed_in? %>
-
-                    <% if current_user.already_favorited?(work) %>
-
-                      <%= link_to"❤", work_favorites_path(work.id), method: :delete %></br>
-                    <% else %>
-                      <%= link_to"♡", work_favorites_path(work.id), method: :post %>
-
+                    <% if current_user.name != "guest" %>
+                      <% if current_user.already_favorited?(work) %>
+                        <%= link_to"❤", work_favorites_path(work.id), method: :delete %></br>
+                      <% else %>
+                        <%= link_to"♡", work_favorites_path(work.id), method: :post %>
+                      <% end %>
                     <% end %>
 
                   <% end %>
@@ -67,12 +66,14 @@
                       作品名：<%= work.work.truncate(14) %></br>
 
                       <% if user_signed_in? %>
-
-                        <% if current_user.already_favorited?(work) %>
-                          <%= link_to"❤", work_favorites_path(work.id), method: :delete %></br>
-                        <% else %>
-                          <%= link_to"♡", work_favorites_path(work.id), method: :post %>
+                        <% if current_user.name != "guest" %>
+                          <% if current_user.already_favorited?(work) %>
+                            <%= link_to"❤", work_favorites_path(work.id), method: :delete %></br>
+                          <% else %>
+                            <%= link_to"♡", work_favorites_path(work.id), method: :post %>
+                          <% end %>
                         <% end %>
+
 
                       <% end %>
 

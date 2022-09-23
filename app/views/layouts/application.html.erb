@@ -33,7 +33,7 @@
         <ul class = "navbar-nav ml-auto">
           <% if admin_signed_in? %>
             <%= render 'common/search_bar'  %>
-            <li  class="nav-item"> <%= link_to"トップ",admin_admin_path, class: "nav-link" %> </li>
+            <li  class="nav-item"> <%= link_to"ユーザー",admin_admin_path, class: "nav-link" %> </li>
             <li  class="nav-item"> <%= link_to"通報一覧",admin_reports_path, class: "nav-link" %> </li>
             <li  class="nav-item"> <%= link_to"タイムライン", admin_works_path, class: "nav-link" %> </li>
             <li  class="nav-item"><i class="fa-sharp fa-solid fa-right-from-bracket"><%= link_to"ログアウト", destroy_admin_session_path,method: :delete, class: "nav-link" %></i></li>
@@ -43,8 +43,10 @@
 
             <li  class="nav-item"> <%= link_to"タイムライン", works_path, class: "nav-link" %> </li>
             <li  class="nav-item"> <%= link_to"ランキング", ranks_path, class: "nav-link" %> </li>
-            <li  class="nav-item"> <%= link_to"新規投稿", new_work_path, class: "nav-link" %> </li>
-            <li  class="nav-item"> <%= link_to"マイページ", user_path(current_user), class: "nav-link" %> </li>
+            <% if current_user.name != "guest" %>
+              <li  class="nav-item"> <%= link_to"新規投稿", new_work_path, class: "nav-link" %> </li>
+              <li  class="nav-item"> <%= link_to"マイページ", user_path(current_user), class: "nav-link" %> </li>
+            <% end %>
             <li  class="nav-item"><i class="fa-sharp fa-solid fa-right-from-bracket"><%= link_to"ログアウト",  destroy_user_session_path,method: :delete, class: "nav-link" %></i></li>
 
           <% else %>

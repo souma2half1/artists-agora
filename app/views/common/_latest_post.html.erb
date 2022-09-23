@@ -8,9 +8,14 @@
             <% works.each do |work| %>
 
                <li class="post-card" style="background-color: #CCE9FF">
-
-                    <%= link_to work_path(work.id) do %>
-                       <%= image_tag work.image, size: "200x200" %></br>
+                    <% if user_signed_in? %>
+                      <%= link_to work_path(work.id) do %>
+                         <%= image_tag work.image, size: "200x200" %></br>
+                      <% end %>
+                    <% elsif admin_signed_in? %>
+                      <%= link_to admin_work_path(work.id) do %>
+                         <%= image_tag work.image, size: "200x200" %></br>
+                      <% end %>
                     <% end %>
 
                     作品名：<%= work.work.truncate(14) %></br>

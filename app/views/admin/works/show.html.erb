@@ -1,0 +1,50 @@
+<div class="container mt-5">
+
+     <h3><i class="fa-solid fa-palette"></i>作品詳細</h3></br>
+
+            ユーザー：
+            <%= link_to admin_user_path(@work.user.id) do %>
+              <%= @work.user.name %></br>
+            <% end %>
+
+            <%= image_tag @work.image, class: 'work-image' %></br>
+
+            作品名：<%= @work.work %></br>
+
+
+             ジャンル：<%= @work.genre %></br>
+
+             作品説明：<%= @work.introduction %></br>
+
+             更新日：<%= @work.updated_at.strftime("%Y-%m-%D") %></br>
+
+             <button type="button" class="btn btn-success mt-2">
+              <%= link_to "編集・削除",edit_admin_work_path(@work) %></br>
+             </button>
+
+          <hr>
+
+          <% if @comments.count > 0 %>
+             <h4 class="mt-5 ">最新コメント</h4>
+              <div class="wrapper_all">
+                <% @comments.each do |comment| %>
+                  <div class="wrapper_middle">
+                    <div class="card-wrapper mt-2">
+                        <div class="d-block comment-card">
+                            <div class="text-center">
+                              <%= image_tag comment.user.image, size: "75x75" %>
+                            </div>
+                            <div class="text-center">
+                              <small><%= comment.user.name.truncate(14) %></small>
+                            </div>
+                            <hr>
+                            <%= comment.comment %>
+                        </div>
+                    </div>
+                 </div>
+                <% end %>
+            <% end %>
+
+
+            <%= paginate @comments %>
+  </div>

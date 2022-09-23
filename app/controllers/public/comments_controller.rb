@@ -15,7 +15,7 @@ class Public::CommentsController < ApplicationController
   def destroy
     @comment = current_user.comments.find(params[:id])
     @comment.delete
-    redirect_to works_path
+    redirect_to  work_comments_path
   end
 
   private

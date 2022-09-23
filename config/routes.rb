@@ -45,6 +45,7 @@ Rails.application.routes.draw do
    #ここにadminのルート
    get 'admin' => 'homes#top'
    get 'search' => 'searches#index'
+   get 'users/unsubscribe'=> 'users#unsubscribe',as: "unsubscribe"
 
    resources :reports,      only: [:index,:destroy]
    resources :works

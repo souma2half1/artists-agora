@@ -1,7 +1,6 @@
 class Public::UsersController < ApplicationController
 
 
-
   def show
    @user = User.find(params[:id])
    @image = @user.image
@@ -16,7 +15,7 @@ class Public::UsersController < ApplicationController
   def update
    @user = current_user
    if @user.update(user_params)
-      redirect_to user_path(current_user), notice: 'ユーザー情報を更新しました'
+      redirect_to user_path(current_user)
    else
      render :edit
    end

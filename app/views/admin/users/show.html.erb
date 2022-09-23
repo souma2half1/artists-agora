@@ -2,11 +2,6 @@
  <div class="row">
   <div class= "col-12">
 
-      <% if @user == current_user %>
-        <h2><i class="fa-solid fa-user"></i>マイページ</h2></br>
-        プロフィール画像<br>
-      <% end %>
-
       <% if @user != current_user %>
         <h2><i class="fa-regular fa-user"></i>ユーザーページ</h2></br>
          ユーザー：<%= @user.name %></br>
@@ -21,21 +16,13 @@
         <%= @user.introduction %></br>
       <% end %>
 
-      <% if current_user.name != "guest" %>
         <%= link_to @user.followings.count, followings_user_path(@user) %>  フォロー  </br>
 
         <%= link_to @user.followers.count, followers_user_path(@user) %>  フォロワー</br>
-      <% end %>
 
-      <button type="button" class="btn btn-warning mt-3">
-        <%= link_to"お気に入り",favorites_path %></br>
-      </button>
-
-      <% if @user == current_user %>
        <button type="button" class="btn btn-success mt-3">
-         <%= link_to"マイページ編集",edit_user_path(current_user) %></br>
+         <%= link_to"ユーザー編集",edit_admin_user_path(@user) %></br>
        </button>
-      <% end %>
       <hr>
 
 
