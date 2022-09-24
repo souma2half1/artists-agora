@@ -5,7 +5,7 @@
 
         <% works.each do |work| %>
             <li class = "post-card" style="background-color: #CCE9FF" >
-              ユーザー：<%= work.user.name.truncate(14) %></br>
+              ユーザー：<%= work.user.name.truncate(10) %></br>
 
               <% if user_signed_in? %>
                 <%= link_to work_path(work.id) do %>
@@ -17,7 +17,7 @@
                 <% end %>
               <% end %>
 
-             作品名：<%= work.work.truncate(14) %></br>
+             作品名：<%= work.work.truncate(10) %></br>
 
               <% if user_signed_in? %>
 
@@ -33,7 +33,7 @@
             <%= work.favorites.count %>いいね</br>
 
             <% if work.genre.present? %>
-              ジャンル：<%= work.genre.truncate(14) %></br>
+              ジャンル：<%= work.genre.truncate(10) %></br>
             <% end %>
           </li>
         <% end %>

@@ -11,7 +11,7 @@
                          <%= image_tag art.work.image, size: "200x200" %></br>
                       <% end %>
 
-                      作品名：<%= art.work.work.truncate(14) %></br>
+                      作品名：<%= art.work.work.truncate(5) %></br>
 
                       <% if user_signed_in? %>
                         <% if current_user.already_favorited?(art) %>
@@ -24,7 +24,7 @@
                         <%= art.work.favorites.count %>いいね</br>
 
                        <% if art.work.genre.present? %>
-                       ジャンル：<%= art.work.genre.truncate(14) %></br>
+                       ジャンル：<%= art.work.genre.truncate(5) %></br>
                        <% end %>
                     </li>
                 <% end %>

@@ -50,7 +50,11 @@ class Public::WorksController < ApplicationController
     params.require(:work).permit(:image,:work,:genre,:introduction)
   end
 
-
+  def public_or_guest
+    if current_user.email == "guest@example.com"
+      redirect_to works_path
+    end
+  end
 
 
 end
