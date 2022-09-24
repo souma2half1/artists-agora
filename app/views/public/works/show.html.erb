@@ -18,7 +18,7 @@
 
              更新日：<%= @work.updated_at.strftime("%Y-%m-%D") %></br>
 
-      <% if current_user.name != "guest" %>
+      <% if current_user.email != "guest@example.com" %>
           <% if @work.user == current_user %>
              <button type="button" class="btn btn-success">
               <%= link_to "編集・削除",edit_work_path(@work) %></br>

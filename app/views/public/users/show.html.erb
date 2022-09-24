@@ -18,10 +18,10 @@
 
       <% if @user.introduction.present? %>
         自己紹介</br>
-        <%= @user.introduction %></br>
+        ：<%= @user.introduction %></br>
       <% end %>
 
-      <% if current_user.name != "guest" %>
+      <% if current_user.email != "guest@example.com" %>
         <%= link_to @user.followings.count, followings_user_path(@user) %>  フォロー  </br>
 
         <%= link_to @user.followers.count, followers_user_path(@user) %>  フォロワー</br>

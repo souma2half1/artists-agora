@@ -7,7 +7,7 @@
         <table class="mt-3">
         <tbody>
 
-          <%= form_with model:@user,url: admin_user_path,method: :patch, id: "patch" do |f| %>
+          <%= form_with model:@user,url: admin_user_path(@user),method: :patch, id: "patch" do |f| %>
               <tr>
                <td><%= f.label :"プロフィール画像" %></td>
                <td><%= f.file_field :image, accept: "image/*" , class: "form-controll" %></td>
@@ -38,7 +38,7 @@
           </table>
 
           <button type="button" class="btn btn-danger">
-            <%= link_to "アカウントを削除", admin_unsubscribe_path %>
+            <%= link_to "アカウントを削除", admin_unsubscribe_path(id: @user.id) %>
           </button>
 
    </div>

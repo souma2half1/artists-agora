@@ -13,7 +13,7 @@
 
       <% if @user.introduction.present? %>
         自己紹介</br>
-        <%= @user.introduction %></br>
+        ：<%= @user.introduction %></br>
       <% end %>
 
         <%= link_to @user.followings.count, followings_user_path(@user) %>  フォロー  </br>
