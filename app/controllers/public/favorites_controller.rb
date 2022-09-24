@@ -1,4 +1,8 @@
 class Public::FavoritesController < ApplicationController
+  
+  before_action :authenticate_user!, except: [:index]
+  before_action :public_or_guest, except: [:index]
+
 
   def index
    @user = User.find(params[:id])
@@ -17,4 +21,11 @@ class Public::FavoritesController < ApplicationController
     @favorite.destroy
     redirect_back(fallback_location: root_path)
   end
+  
+  def public_or_guest
+    if current_user.email == "guest@example.com"
+      redirect_to works_path
+    end
+  end
+  
 end

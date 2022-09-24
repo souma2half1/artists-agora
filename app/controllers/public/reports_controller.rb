@@ -1,4 +1,8 @@
 class Public::ReportsController < ApplicationController
+  
+  before_action :authenticate_user!
+  before_action :public_or_guest
+
 
   def new
     @report = Report.new
@@ -9,14 +13,20 @@ class Public::ReportsController < ApplicationController
   def create
     @report = Report.new(report_params)
     @report.save
-    redirect_to works_path , notice:"コメントを報告しました。"
+    redirect_to works_path
   end
 
   private
+  
   def report_params
-  params.require(:report).permit(:report,:work_id,:comment_id).merge(user_id: current_user.id)
+   params.require(:report).permit(:report,:work_id,:comment_id).merge(user_id: current_user.id)
   end
 
+  def public_or_guest
+    if current_user.email == "guest@example.com"
+      redirect_to works_path
+    end
+  end
 
 end
 

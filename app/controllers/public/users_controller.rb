@@ -1,5 +1,8 @@
 class Public::UsersController < ApplicationController
 
+  before_action :authenticate_user!, except: [:show,:followings,:followers]
+  before_action :public_or_guest, except: [:show,:followings,:followers]
+
 
   def show
    @user = User.find(params[:id])
@@ -46,4 +49,11 @@ class Public::UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:image,:name,:introduction,:email)
   end
+
+  def public_or_guest
+    if current_user.email == "guest@example.com"
+      redirect_to works_path
+    end
+  end
+
 end

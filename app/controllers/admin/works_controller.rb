@@ -1,4 +1,6 @@
 class Admin::WorksController < ApplicationController
+  
+  before_action :authenticate_admin!
 
   def index
     @works = Work.page(params[:page])

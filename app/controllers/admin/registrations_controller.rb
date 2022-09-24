@@ -9,7 +9,7 @@ class Admin::RegistrationsController < Devise::RegistrationsController
   end
 
 
- end
+end
 
   # GET /resource/sign_up
   # def new

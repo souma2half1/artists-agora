@@ -16,9 +16,6 @@
         ：<%= @user.introduction %></br>
       <% end %>
 
-        <%= link_to @user.followings.count, followings_user_path(@user) %>  フォロー  </br>
-
-        <%= link_to @user.followers.count, followers_user_path(@user) %>  フォロワー</br>
 
        <button type="button" class="btn btn-success mt-3">
          <%= link_to"ユーザー編集",edit_admin_user_path(@user) %></br>

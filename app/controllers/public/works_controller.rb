@@ -1,5 +1,8 @@
 class Public::WorksController < ApplicationController
 
+  before_action :authenticate_user!, except: [:index,:show]
+  before_action :public_or_guest, except: [:index,:show]
+
   def index
     @works = Work.page(params[:page])
   end
@@ -42,7 +45,12 @@ class Public::WorksController < ApplicationController
   end
 
   private
+
   def work_params
     params.require(:work).permit(:image,:work,:genre,:introduction)
   end
+
+
+
+
 end
