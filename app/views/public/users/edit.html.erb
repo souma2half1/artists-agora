@@ -4,10 +4,8 @@
 
       <div class = "m-3">
         <h2 class"mb-3"><i class="fa-sharp fa-solid fa-user-pen"></i>マイページ編集</h2>
-        <table class="table">
-        <tbody>
 
-          <%= form_with model:@user,url: user_path(@user),method: :patch, id: "patch" do |f| %>
+          <%= form_with model: @user do |f| %>
 
            <div class="m-3">
               <%= f.label :image, "プロフィール画像：" %></br>
@@ -26,21 +24,16 @@
               <%= f.text_area :email %>
             </div>
             <div class="m-3">
-              <%= f.submit '変更を保存',form: "patch", class: "btn btn-primary mt-3 mb-3" %>
+              <%= f.submit '変更を保存', class: "btn btn-primary mt-3 mb-3" %>
             </div>
 
           <% end %>
 
-          </tbody>
-          </table>
-
           <button type="button" class="btn btn-danger mb-2">
             <%= link_to "アカウントを削除",unsubscribe_path(id: @user.id) %>
           </button>
-          <hr>
 
 
-        <%= render 'common/latest_post' ,works: @works %>
    </div>
   </div>
  </div>

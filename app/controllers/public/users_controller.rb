@@ -11,7 +11,7 @@ class Public::UsersController < ApplicationController
   end
 
   def edit
-   @user = current_user
+   @user = User.find(params[:id])
    @works = @user.works.page(params[:page])
   end
 

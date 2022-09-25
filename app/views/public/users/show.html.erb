@@ -21,6 +21,7 @@
         ：<%= @user.introduction %></br>
       <% end %>
 
+
       <% if current_user.email != "guest@example.com" %>
         <%= link_to @user.followings.count, followings_user_path(@user) %>  フォロー  </br>
 
@@ -28,23 +29,25 @@
       <% end %>
 
       <button type="button" class="btn btn-warning mt-3">
-        <%= link_to"お気に入り",favorites_path %></br>
+        <%= link_to"お気に入り",favorites_path(@user) %></br>
       </button>
 
-      <% if @user == current_user %>
-       <button type="button" class="btn btn-success mt-3">
-         <%= link_to"マイページ編集",edit_user_path(current_user) %></br>
-       </button>
-       <% else %>
-          <% if @user.is_followed_by?(current_user) %>
-            <%= link_to user_relationships_path(@user), method: :delete do %>
-              <button class="btn btn-danger mt-3">フォロー解除</button>
+      <% if current_user.email != "guest@example.com" %>
+        <% if @user == current_user %>
+         <button type="button" class="btn btn-success mt-3">
+           <%= link_to"マイページ編集",edit_user_path(current_user) %></br>
+         </button>
+         <% else %>
+            <% if @user.is_followed_by?(current_user) %>
+              <%= link_to user_relationships_path(@user), method: :delete do %>
+                <button class="btn btn-danger mt-3">フォロー解除</button>
+              <% end %>
+            <% else %>
+              <%= link_to user_relationships_path(@user), method: :post do %>
+                <button class="btn btn-primary mt-3">フォロー</button>
+              <% end %>
             <% end %>
-          <% else %>
-            <%= link_to user_relationships_path(@user), method: :post do %>
-              <button class="btn btn-primary mt-3">フォロー</button>
-            <% end %>
-          <% end %>
+        <% end %>
       <% end %>
       <hr>
 

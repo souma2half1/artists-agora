@@ -8,10 +8,10 @@
                       ユーザー：<%= art.user.name.truncate(14) %></br>
 
                       <%= link_to work_path(art) do %>
-                         <%= image_tag art.work.image, size: "200x200" %></br>
+                         <%= image_tag art.image, size: "200x200" %></br>
                       <% end %>
 
-                      作品名：<%= art.work.work.truncate(5) %></br>
+                      作品名：<%= art.work.truncate(10) %></br>
 
                       <% if user_signed_in? %>
                         <% if current_user.already_favorited?(art) %>
@@ -21,10 +21,10 @@
                         <% end %>
                       <% end %>
 
-                        <%= art.work.favorites.count %>いいね</br>
+                        <%= art.favorites.count %>いいね</br>
 
-                       <% if art.work.genre.present? %>
-                       ジャンル：<%= art.work.genre.truncate(5) %></br>
+                       <% if art.genre.present? %>
+                       ジャンル：<%= art.genre.truncate(10) %></br>
                        <% end %>
                     </li>
                 <% end %>
