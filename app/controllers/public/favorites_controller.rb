@@ -7,7 +7,7 @@ class Public::FavoritesController < ApplicationController
   def index
    @user = User.find(params[:id])
    work_id = @user.favorites.pluck(:work_id)
-   @works = Work.where(id: work_id).page(params[:page])
+   @works = Work.where(id: work_id).page(params[:page]).order(created_at: :desc)
   end
 
   def create

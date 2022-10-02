@@ -4,7 +4,7 @@ class Public::WorksController < ApplicationController
   before_action :public_or_guest, except: [:index,:show]
 
   def index
-    @works = Work.page(params[:page])
+    @works = Work.page(params[:page]).order(created_at: :desc)
   end
 
   def new
@@ -13,7 +13,7 @@ class Public::WorksController < ApplicationController
 
   def show
     @work = Work.find(params[:id])
-    @comments = @work.comments.page(params[:page])
+    @comments = @work.comments.page(params[:page]).order(created_at: :desc)
   end
 
   def edit
