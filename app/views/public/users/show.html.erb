@@ -3,41 +3,41 @@
   <div class= "col-12">
 
       <% if @user == current_user %>
-        <h2><i class="fa-solid fa-user"></i>マイページ</h2></br>
+        <h2><i class="fa-solid fa-user"></i>マイページ</h2><br/>
         プロフィール画像<br>
       <% end %>
 
       <% if @user != current_user %>
-        <h2><i class="fa-regular fa-user"></i>ユーザーページ</h2></br>
-         ユーザー：<%= @user.name %></br>
+        <h2><i class="fa-regular fa-user"></i>ユーザーページ</h2><br/>
+         ユーザー：<%= @user.name %><br/>
       <% end %>
 
       <div class="m-3">
         <% if @user.image.present? %>
-          <%= image_tag @user.image, class: 'work-image'  %></br>
+          <%= image_tag @user.image, class: 'work-image'  %><br/>
         <% end %>
       </div>
 
       <% if @user.introduction.present? %>
-        自己紹介</br>
-        ：<%= @user.introduction %></br>
+        自己紹介<br/>
+        ：<%= @user.introduction %><br/>
       <% end %>
 
 
       <% if current_user.email != "guest@example.com" %>
-        <%= link_to @user.followings.count, followings_user_path(@user) %>  フォロー  </br>
+        <%= link_to @user.followings.count, followings_user_path(@user) %>  フォロー  <br/>
 
-        <%= link_to @user.followers.count, followers_user_path(@user) %>  フォロワー</br>
+        <%= link_to @user.followers.count, followers_user_path(@user) %>  フォロワー<br/>
       <% end %>
 
       <button type="button" class="btn btn-warning mt-3">
-        <%= link_to"お気に入り",favorites_path(@user) %></br>
+        <%= link_to"お気に入り",favorites_path(@user) %><br/>
       </button>
 
       <% if current_user.email != "guest@example.com" %>
         <% if @user == current_user %>
          <button type="button" class="btn btn-success mt-3">
-           <%= link_to"マイページ編集",edit_user_path(current_user) %></br>
+           <%= link_to"マイページ編集",edit_user_path(current_user) %><br/>
          </button>
          <% else %>
             <% if @user.is_followed_by?(current_user) %>

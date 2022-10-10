@@ -3,24 +3,24 @@
   <div class= "col-12">
 
       <% if @user != current_user %>
-        <h2><i class="fa-regular fa-user"></i>ユーザーページ</h2></br>
-         ユーザー：<%= @user.name %></br>
+        <h2><i class="fa-regular fa-user"></i>ユーザーページ</h2><br/>
+         ユーザー：<%= @user.name %><br/>
       <% end %>
 
       <div class="m-3">
        <% if @user.image.present? %>
-          <%= image_tag @user.image, class: 'work-image'  %></br>
+          <%= image_tag @user.image, class: 'work-image'  %><br/>
        <% end %>
       </div>
 
       <% if @user.introduction.present? %>
-        自己紹介</br>
-        ：<%= @user.introduction %></br>
+        自己紹介<br/>
+        ：<%= @user.introduction %><br/>
       <% end %>
 
 
        <button type="button" class="btn btn-success mt-3">
-         <%= link_to"ユーザー編集",edit_admin_user_path(@user) %></br>
+         <%= link_to"ユーザー編集",edit_admin_user_path(@user) %><br/>
        </button>
       <hr>
 

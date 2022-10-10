@@ -6,13 +6,15 @@ class Public::UsersController < ApplicationController
 
   def show
    @user = User.find(params[:id])
-   @image = @user.image
    @works = @user.works.page(params[:page]).order(created_at: :desc)
   end
 
   def edit
    @user = User.find(params[:id])
    @works = @user.works.page(params[:page]).order(created_at: :desc)
+   if current_user.id != @works.user_id
+     redirect_to user_path(@user)
+   end
   end
 
   def update

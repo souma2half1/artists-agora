@@ -11,13 +11,13 @@ class Work < ApplicationRecord
   validates :image, presence: true
 
     def self.looks(search, word)
+      
+      if word.blank?
+        return
+      end
 
       if search == "perfect_match"
         @work = Work.where("work LIKE?","#{word}")
-      elsif search == "forward_match"
-        @work = Work.where("work LIKE?","#{word}%")
-      elsif search == "Wackward_match"
-        @work = Work.where("work LIKE?","%#{word}")
       elsif search == "partial_match"
         @work = Work.where("work LIKE?","%#{word}%")
       else

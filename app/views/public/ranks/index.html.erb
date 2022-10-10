@@ -14,29 +14,24 @@
              <li>
                第<%= i %>位
                <div class="post-card mr-5" style="background-color: #CCE9FF">
-                 ユーザー：<%= work.user.name.truncate(10) %></br>
+                 ユーザー：<%= work.user.name.truncate(10) %><br/>
 
                   <%= link_to work_path(work.id) do %>
-                      <%= image_tag work.image, size: "200x200" %></br>
+                      <%= image_tag work.image, size: "200x200" %><br/>
                   <% end %>
 
-                  作品名：<%= work.work.truncate(10) %></br>
+                  作品名：<%= work.work.truncate(10) %><br/>
 
-                  <% if user_signed_in? %>
-                    <% if current_user.name != "guest" %>
-                      <% if current_user.already_favorited?(work) %>
-                        <%= link_to"❤", work_favorites_path(work.id), method: :delete %></br>
-                      <% else %>
-                        <%= link_to"♡", work_favorites_path(work.id), method: :post %>
-                      <% end %>
-                    <% end %>
-
+                  <% if user_signed_in? || urrent_user.name != "guest" || current_user.already_favorited?(work) %>
+                      <%= link_to"❤", work_favorites_path(work.id), method: :delete %><br/>
+                  <% else %>
+                      <%= link_to"♡", work_favorites_path(work.id), method: :post %>
                   <% end %>
 
-                    <%= work.favorites.count %>いいね</br>
+                    <%= work.favorites.count %>いいね<br/>
 
                   <% if work.genre.present? %>
-                    ジャンル：<%= work.genre.truncate(10) %></br>
+                    ジャンル：<%= work.genre.truncate(10) %><br/>
                   <% end %>
                </div>
 
@@ -57,30 +52,24 @@
                <li>
                   第<%= i %>位
                     <div class="post-card mr-5" style="background-color: #CCE9FF">
-                        ユーザー：<%= work.user.name.truncate(14) %></br>
+                        ユーザー：<%= work.user.name.truncate(14) %><br/>
 
                       <%= link_to work_path(work.id) do %>
-                          <%= image_tag work.image, size: "200x200" %></br>
+                          <%= image_tag work.image, size: "200x200" %><br/>
                       <% end %>
 
-                      作品名：<%= work.work.truncate(14) %></br>
+                      作品名：<%= work.work.truncate(14) %><br/>
 
-                      <% if user_signed_in? %>
-                        <% if current_user.name != "guest" %>
-                          <% if current_user.already_favorited?(work) %>
-                            <%= link_to"❤", work_favorites_path(work.id), method: :delete %></br>
-                          <% else %>
-                            <%= link_to"♡", work_favorites_path(work.id), method: :post %>
-                          <% end %>
-                        <% end %>
-
-
+                      <% if user_signed_in? || current_user.name != "guest" || current_user.already_favorited?(work) %>
+                        <%= link_to"❤", work_favorites_path(work.id), method: :delete %><br/>
+                      <% else %>
+                        <%= link_to"♡", work_favorites_path(work.id), method: :post %>
                       <% end %>
 
-                        <%= work.favorites.count %>いいね</br>
+                        <%= work.favorites.count %>いいね<br/>
 
                       <% if work.genre.present? %>
-                        ジャンル：<%= work.genre.truncate(14) %></br>
+                        ジャンル：<%= work.genre.truncate(14) %><br/>
                       <% end %>
                       </div>
                  </li>

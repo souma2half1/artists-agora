@@ -19,6 +19,9 @@ class Public::WorksController < ApplicationController
   def edit
     @user = current_user
     @work = Work.find(params[:id])
+    if current_user.id != @work.user_id
+     redirect_to works_path
+    end
   end
 
   def create

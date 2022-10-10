@@ -1,27 +1,27 @@
 <div class="container mt-5">
 
-     <h3><i class="fa-solid fa-palette"></i>作品詳細</h3></br>
+     <h3><i class="fa-solid fa-palette"></i>作品詳細</h3><br/>
 
             ユーザー：
             <%= link_to user_path(@work.user.id) do %>
-              <%= @work.user.name %></br>
+              <%= @work.user.name %><br/>
             <% end %>
 
-            <%= image_tag @work.image, class: 'work-image' %></br>
+            <%= image_tag @work.image, class: 'work-image' %><br/>
 
-            作品名：<%= @work.work %></br>
+            作品名：<%= @work.work %><br/>
 
 
-             ジャンル：<%= @work.genre %></br>
+             ジャンル：<%= @work.genre %><br/>
 
-             作品説明：<%= @work.introduction %></br>
+             作品説明：<%= @work.introduction %><br/>
 
-             更新日：<%= @work.updated_at.strftime("%Y-%m-%D") %></br>
+             更新日：<%= @work.updated_at.strftime("%Y-%m-%D") %><br/>
 
       <% if current_user.email != "guest@example.com" %>
           <% if @work.user == current_user %>
              <button type="button" class="btn btn-success">
-              <%= link_to "編集・削除",edit_work_path(@work) %></br>
+              <%= link_to "編集・削除",edit_work_path(@work) %><br/>
              </button>
           <% end %>
 
