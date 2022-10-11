@@ -9,7 +9,7 @@
 
             <%= image_tag @work.image, class: 'work-image' %><br/>
 
-            作品名：<%= @work.work %><br/>
+            作品名：<%= @work.title %><br/>
 
 
              ジャンル：<%= @work.genre %><br/>
@@ -35,15 +35,15 @@
                               <%= image_tag comment.user.image, size: "75x75" %>
                             </div>
                             <div class="text-center">
-                              <small><%= comment.user.name.truncate(14) %></small>
+                            <small><%= comment.user.name.truncate(14) %></small>
                             </div>
                             <hr>
-                            <%= comment.comment %>
+                            <%= comment.body %>
                         </div>
                     </div>
                  </div>
                 <% end %>
-            <% end %>
+          <% end %>
 
 
             <%= paginate @comments %>

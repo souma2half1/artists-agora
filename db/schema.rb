@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 2022_09_05_061827) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "work_id", null: false
     t.integer "user_id", null: false
-    t.text "comment", null: false
+    t.text "body", null: false
   end
 
   create_table "favorites", force: :cascade do |t|
@@ -86,7 +86,7 @@ ActiveRecord::Schema.define(version: 2022_09_05_061827) do
     t.integer "user_id", null: false
     t.integer "work_id", null: false
     t.integer "comment_id", null: false
-    t.text "report", null: false
+    t.text "body", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -107,7 +107,7 @@ ActiveRecord::Schema.define(version: 2022_09_05_061827) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id", null: false
-    t.string "work", null: false
+    t.string "title", null: false
     t.text "introduction", null: false
     t.string "genre"
   end

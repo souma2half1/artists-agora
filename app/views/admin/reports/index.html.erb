@@ -15,8 +15,8 @@
    　　　 <tbody>
           <% @reports.each do |report| %>
           <tr>
-            <td><%= report.comment.comment %></td>
-            <td><%= report.report %></td>
+            <td><%= report.comment.body %></td>
+            <td><%= report.body %></td>
             <td><%=  link_to"削除する" ,admin_report_path(report.id),method: :delete%></td>
           </tr>
           <% end %>

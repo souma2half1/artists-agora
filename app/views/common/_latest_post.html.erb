@@ -18,14 +18,12 @@
                       <% end %>
                     <% end %>
 
-                    作品名：<%= work.work.truncate(10) %><br/>
+                    作品名：<%= work.title.truncate(10) %><br/>
 
-                    <% if user_signed_in? %>
-                      <% if current_user.already_favorited?(work) %>
+                    <% if user_signed_in? || current_user.already_favorited?(work) %>
                         <%= link_to"❤", work_favorites_path(work.id), method: :delete %><br/>
                       <% else %>
                         <%= link_to"♡", work_favorites_path(work.id), method: :post %>
-                      <% end %>
                     <% end %>
 
                        <%= work.favorites.count %>いいね<br/>

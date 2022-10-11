@@ -9,7 +9,7 @@
         <div>
             ユーザー：<%= @work.user.name %><br/>
            <%= image_tag @work.image, class: 'work-image' %><br/>
-            作品名：<%= @work.work %><br/>
+            作品名：<%= @work.title %><br/>
             ジャンル：<%= @work.genre %><br/>
             作品説明：<%= @work.introduction %><br/>
             更新日：<%= @work.updated_at.strftime("%Y-%m-%D") %><br/>
@@ -20,7 +20,7 @@
             <%= form_with model:[@work,@comment],url: work_comments_path,method: :post do |f| %>
 
               <%= f.label :"コメント投稿" %><br/>
-              <%= f.text_area :comment,size: "30x10" %>
+              <%= f.text_area :bo,size: "30x10" %>
 
               <%= f.submit "投稿",class: "btn btn-success" %>
 

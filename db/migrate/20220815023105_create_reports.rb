@@ -6,7 +6,7 @@ class CreateReports < ActiveRecord::Migration[6.1]
       t.integer :user_id,    null: false
       t.integer :work_id,    null: false
       t.integer :comment_id, null: false
-      t.text :report,        null: false
+      t.text :body,        null: false
     end
   end
 end
