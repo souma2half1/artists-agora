@@ -19,7 +19,7 @@ class Public::ReportsController < ApplicationController
   private
   
   def report_params
-   params.require(:report).permit(:report,:work_id,:comment_id).merge(user_id: current_user.id)
+   params.require(:report).permit(:body,:work_id,:comment_id).merge(user_id: current_user.id)
   end
 
   def public_or_guest

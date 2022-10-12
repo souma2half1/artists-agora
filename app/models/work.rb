@@ -7,11 +7,11 @@ class Work < ApplicationRecord
 
   has_one_attached :image
 
-  validates :work ,presence: true
+  validates :title ,presence: true
   validates :image, presence: true
 
     def self.looks(search, word)
-      
+
       if word.blank?
         return
       end

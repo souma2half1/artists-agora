@@ -50,7 +50,7 @@ class Public::WorksController < ApplicationController
   private
 
   def work_params
-    params.require(:work).permit(:image,:work,:genre,:introduction)
+    params.require(:work).permit(:image,:title,:genre,:introduction)
   end
 
   def public_or_guest

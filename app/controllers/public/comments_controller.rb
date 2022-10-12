@@ -20,7 +20,7 @@ class Public::CommentsController < ApplicationController
 
   private
   def comment_params
-    params.require(:comment).permit(:comment).merge(work_id: params[:work_id],user_id: current_user.id)
+    params.require(:comment).permit(:body).merge(work_id: params[:work_id],user_id: current_user.id)
   end
 
 end
