@@ -1,45 +1,32 @@
   <div class="container mt-5">
     <div class="row">
       <div class="col-6">
-
          <h3><i class="fa-sharp fa-solid fa-file-import"></i>作品編集</h3><br/>
-
           <%= image_tag @work.image, size: "150x150" %>
-
           <%= form_with model:@work,url: work_path(@work.id),method: :patch do |f| %>
-
           <div class="field m-3">
-             <%= f.label :"作品画像：" %><br>
-             <%= f.file_field :image, accept: "image/*" %>
-           </div>
-
-           <div class="field m-3">
-             <%= f.label :"作品名：" %><br>
-             <%= f.text_field :title %>
-           </div>
-
-           <div class="field m-3">
+            <%= f.label :"作品画像：" %><br>
+            <%= f.file_field :image, accept: "image/*" %>
+          </div>
+          <div class="field m-3">
+            <%= f.label :"作品名：" %><br>
+            <%= f.text_field :title %>
+          </div>
+          <div class="field m-3">
             <%= f.label :"ジャンル：" %><br>
             <%= f.text_field :genre %>
-           </div>
-
-           <div class="field m-3">
-             <%= f.label :"作品説明：" %><br>
-             <%= f.text_area :introduction,size: "40x10" %>
-           </div>
-
-           <div class="actions">
-               <%= f.submit "更新" ,class: "btn btn-success" %>
-           </div>
-
-           <% end %>
-
-           <button type="button" class="btn btn-danger mt-2">
-            <%= link_to "作品削除", work_path(@work.id),method: :delete %>
+          </div>
+          <div class="field m-3">
+            <%= f.label :"作品説明：" %><br>
+            <%= f.text_area :introduction,size: "40x10" %>
+          </div>
+          <div class="actions">
+            <%= f.submit "更新" ,class: "btn btn-success" %>
+          </div>
+          <% end %>
+          <button type="button" class="btn btn-danger mt-2">
+          <%= link_to "作品削除", work_path(@work.id),method: :delete %>
           </button>
-
-
-
      </div>
     </div>
    </div>

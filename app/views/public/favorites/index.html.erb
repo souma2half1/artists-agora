@@ -1,33 +1,26 @@
   <div class="container mt-5">
-
-       <h2>お気に入り投稿</h2>
-            <ul class = "card-wrapper mt-3">
-                <% @works.each do |work| %>
-                  <li class = "post-card" style="background-color: #CCE9FF">
-
-                      ユーザー：<%= work.user.name.truncate(14) %><br/>
-
-                      <%= link_to work_path(work) do %>
-                         <%= image_tag work.image, size: "200x200" %><br/>
-                      <% end %>
-
-                      作品名：<%= work.title.truncate(10) %><br/>
-
-                      <% if user_signed_in? %>
-                        <% if current_user.already_favorited?(work) %>
-                          <%= link_to"❤", work_favorites_path(work), method: :delete %><br/>
-                        <% else %>
-                          <%= link_to"♡", work_favorites_path(work), method: :post %>
-                        <% end %>
-                      <% end %>
-
-                        <%= work.favorites.count %>いいね<br/>
-
-                       <% if work.genre.present? %>
-                       ジャンル：<%= work.genre.truncate(10) %><br/>
-                       <% end %>
-                    </li>
-                <% end %>
-            </ul>
-        <%= paginate @works %>
+    <h2>お気に入り投稿</h2>
+    <ul class = "card-wrapper mt-3">
+      <% @works.each do |work| %>
+        <li class = "post-card" style="background-color: #CCE9FF">
+        ユーザー：<%= work.user.name.truncate(14) %><br/>
+        <%= link_to work_path(work) do %>
+          <%= image_tag work.image, size: "200x200" %><br/>
+        <% end %>
+        作品名：<%= work.title.truncate(10) %><br/>
+        <% if user_signed_in? %>
+          <% if current_user.already_favorited?(work) %>
+            <%= link_to"❤", work_favorites_path(work), method: :delete %><br/>
+          <% else %>
+            <%= link_to"♡", work_favorites_path(work), method: :post %>
+          <% end %>
+        <% end %>
+        <%= work.favorites.count %>いいね<br/>
+        <% if work.genre.present? %>
+          ジャンル：<%= work.genre.truncate(10) %><br/>
+        <% end %>
+        </li>
+      <% end %>
+    </ul>
+    <%= paginate @works %>
   </div>

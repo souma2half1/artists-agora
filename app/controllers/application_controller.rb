@@ -6,6 +6,12 @@ class ApplicationController < ActionController::Base
    @image = current_user.image
   end
   
+  def public_or_guest
+    if current_user.email == "guest@example.com"
+      redirect_to works_path
+    end
+  end
+  
 
   protected
 

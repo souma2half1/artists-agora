@@ -19,13 +19,7 @@ class Public::ReportsController < ApplicationController
   private
   
   def report_params
-   params.require(:report).permit(:body,:work_id,:comment_id).merge(user_id: current_user.id)
-  end
-
-  def public_or_guest
-    if current_user.email == "guest@example.com"
-      redirect_to works_path
-    end
+    params.require(:report).permit(:body,:work_id,:comment_id).merge(user_id: current_user.id)
   end
 
 end

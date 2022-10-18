@@ -5,25 +5,25 @@ class Public::UsersController < ApplicationController
 
 
   def show
-   @user = User.find(params[:id])
-   @works = @user.works.page(params[:page]).order(created_at: :desc)
+    @user = User.find(params[:id])
+    @works = @user.works.page(params[:page]).order(created_at: :desc)
   end
 
   def edit
-   @user = User.find(params[:id])
-   @works = @user.works.page(params[:page]).order(created_at: :desc)
-   if current_user.id != @works.user_id
-     redirect_to user_path(@user)
-   end
+    @user = User.find(params[:id])
+    @works = @user.works.page(params[:page]).order(created_at: :desc)
+    if current_user.id != @works.user_id
+      redirect_to user_path(@user)
+    end
   end
 
   def update
-   @user = current_user
-   if @user.update(user_params)
+    @user = current_user
+    if @user.update(user_params)
       redirect_to user_path(current_user)
-   else
-     render :edit
-   end
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -50,12 +50,6 @@ class Public::UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:image,:name,:introduction,:email)
-  end
-
-  def public_or_guest
-    if current_user.email == "guest@example.com"
-      redirect_to works_path
-    end
   end
 
 end

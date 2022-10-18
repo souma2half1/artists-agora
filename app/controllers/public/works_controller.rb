@@ -27,7 +27,6 @@ class Public::WorksController < ApplicationController
   def create
     @work = Work.new(work_params)
     @work.user_id = current_user.id
-
     if @work.save
     redirect_to works_path
     else
@@ -36,15 +35,15 @@ class Public::WorksController < ApplicationController
   end
 
   def update
-   @work = Work.find(params[:id])
-   @work.update(work_params)
-   redirect_to work_path(@work.id)
+    @work = Work.find(params[:id])
+    @work.update(work_params)
+    redirect_to work_path(@work.id)
   end
 
   def destroy
-   @work = Work.find(params[:id])
-   @work.delete
-   redirect_to works_path
+    @work = Work.find(params[:id])
+    @work.delete
+    redirect_to works_path
   end
 
   private
@@ -52,12 +51,5 @@ class Public::WorksController < ApplicationController
   def work_params
     params.require(:work).permit(:image,:title,:genre,:introduction)
   end
-
-  def public_or_guest
-    if current_user.email == "guest@example.com"
-      redirect_to works_path
-    end
-  end
-
 
 end

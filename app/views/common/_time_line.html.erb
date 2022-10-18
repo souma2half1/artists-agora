@@ -1,46 +1,36 @@
 <div class="row">
   <div class="col-12">
-
     <ul class="card-wrapper">
-
         <% works.each do |work| %>
-            <li class = "post-card" style="background-color: #CCE9FF" >
-              ユーザー：<%= work.user.name.truncate(10) %></br>
-
-              <% if user_signed_in? %>
-                <%= link_to work_path(work.id) do %>
-                  <%= image_tag work.image, size: "200x200" %></br>
-                <% end %>
-              <% elsif admin_signed_in? %>
-                <%= link_to admin_work_path(work.id) do %>
-                  <%= image_tag work.image, size: "200x200" %></br>
-                <% end %>
-              <% end %>
-
-             作品名：<%= work.title.truncate(10) %></br>
-
-              <% if user_signed_in? %>
-
-              <% if current_user.name != "guest" %>
-                <% if current_user.already_favorited?(work) %>
-                  <%= link_to"❤", work_favorites_path(work.id), method: :delete %></br>
-                <% else %>
-                  <%= link_to"♡", work_favorites_path(work.id), method: :post %>
-                <% end %>
+          <li class = "post-card" style="background-color: #CCE9FF" >
+          ユーザー：<%= work.user.name.truncate(10) %></br>
+          <% if user_signed_in? %>
+            <%= link_to work_path(work.id) do %>
+              <%= image_tag work.image, size: "200x200" %></br>
+            <% end %>
+          <% elsif admin_signed_in? %>
+            <%= link_to admin_work_path(work.id) do %>
+              <%= image_tag work.image, size: "200x200" %></br>
+            <% end %>
+          <% end %>
+          作品名：<%= work.title.truncate(10) %></br>
+          <% if user_signed_in? %>
+            <% if current_user.name != "guest" %>
+              <% if current_user.already_favorited?(work) %>
+                <%= link_to"❤", work_favorites_path(work.id), method: :delete %></br>
+              <% else %>
+                <%= link_to"♡", work_favorites_path(work.id), method: :post %>
               <% end %>
             <% end %>
-
-            <%= work.favorites.count %>いいね</br>
-
-            <% if work.genre.present? %>
-              ジャンル：<%= work.genre.truncate(10) %></br>
-            <% end %>
+          <% end %>
+          <%= work.favorites.count %>いいね</br>
+          <% if work.genre.present? %>
+            ジャンル：<%= work.genre.truncate(10) %></br>
+          <% end %>
           </li>
         <% end %>
-
     </ul>
-        <%= paginate works %>
-
+    <%= paginate works %>
     </div>
   </div>
 

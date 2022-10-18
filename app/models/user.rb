@@ -25,6 +25,13 @@ class User < ApplicationRecord
   def already_favorited?(work)
     self.favorites.exists?(work_id: work.id)
   end
+  
+  def is_guest?
+    if self.email != "guest@example.com"
+      return false
+    end
+    return true
+  end
 
   def self.looks(search, word)
     
@@ -41,15 +48,5 @@ class User < ApplicationRecord
     end
     
   end
-
-
-  #def get_image(width, height)
-  #unless image.attached?
-    #file_path = Rails.root.join('app/assets/images/sample-author1.jpg')
-    #image.attach(io: File.open(file_path), filename: 'no-image.jpg', content_type: 'image/jpeg')
-  #end
-  #image.variant(resize_to_limit: [width, height]).processed
-  #endfile_image.variant(resize_to_limit: [100, 100]).processed
-  #end
 
 end
