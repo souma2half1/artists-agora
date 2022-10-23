@@ -8,6 +8,7 @@ class Public::CommentsController < ApplicationController
 
   def create
     @comment = Comment.new(comment_params)
+    #binding.pry
     @comment.save
     redirect_to work_comments_path
   end

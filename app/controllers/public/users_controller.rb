@@ -12,7 +12,7 @@ class Public::UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
     @works = @user.works.page(params[:page]).order(created_at: :desc)
-    if current_user.id != @works.user_id
+    if current_user.id != @user.id
       redirect_to user_path(@user)
     end
   end
