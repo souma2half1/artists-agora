@@ -31,13 +31,34 @@
             <tr>
               <td>作品名：<br/>
                 <%= link_to work_path(work) do %>
-                  <%= work. %>
+                  <%= work.title %>
                 <% end %>
               </td>
               <td>ジャンル：<br/><%= work.genre %></td>
               <td>作品説明：<br/><%= work.introduction %></td>
               <td><%= link_to work_path(work.id) do %>
                 <%= image_tag work.image, size: "150x150" %><br/>
+              <% end %>
+              </td>
+            </tr>
+            <% end %>
+          <% end %>
+        </tbody>
+      <% end %>
+      <% if @range =="ジャンル" %>
+        <tbody>
+          <% if @genres.present? %>
+            <% @genres.each do |genre| %>
+            <tr>
+              <td>作品名：<br/>
+                <%= link_to work_path(genre) do %>
+                  <%= genre.title %>
+                <% end %>
+              </td>
+              <td>ジャンル：<br/><%= genre.genre %></td>
+              <td>作品説明：<br/><%= genre.introduction %></td>
+              <td><%= link_to work_path(genre.id) do %>
+                <%= image_tag genre.image, size: "150x150" %><br/>
               <% end %>
               </td>
             </tr>

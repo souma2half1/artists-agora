@@ -17,9 +17,9 @@ class Work < ApplicationRecord
       end
 
       if search == "perfect_match"
-        @work = Work.where("work LIKE?","#{word}")
+        @work = Work.where("title LIKE? OR genre LIKE?" ,"#{word}","#{word}")
       elsif search == "partial_match"
-        @work = Work.where("work LIKE?","%#{word}%")
+        @work = Work.where("title LIKE? OR genre LIKE?" ,"%#{word}%","%#{word}%")
       else
         @work = Work.all
       end

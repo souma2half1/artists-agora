@@ -28,9 +28,9 @@ class User < ApplicationRecord
   
   def is_guest?
     if self.email != "guest@example.com"
-      return false
+      return true
     end
-    return true
+    return false
   end
 
   def self.looks(search, word)
