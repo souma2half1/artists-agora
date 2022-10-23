@@ -14,6 +14,8 @@ class Admin::SearchesController < ApplicationController
       @works = Work.looks(params[:search], params[:word])
     end
 
+    if @range =="ジャンル"
+      @genres = Work.looks(params[:search], params[:word])
+    end
   end
-
 end
