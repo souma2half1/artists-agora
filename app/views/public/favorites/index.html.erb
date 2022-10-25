@@ -8,7 +8,7 @@
           <%= image_tag work.image, size: "200x200" %><br/>
         <% end %>
         作品名：<%= work.title.truncate(10) %><br/>
-        <% if user_signed_in? %>
+        <% if user_signed_in? && current_user.name != "guest" %>
           <% if current_user.already_favorited?(work) %>
             <%= link_to"❤", work_favorites_path(work), method: :delete %><br/>
           <% else %>
