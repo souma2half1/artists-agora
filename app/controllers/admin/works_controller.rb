@@ -1,5 +1,5 @@
 class Admin::WorksController < ApplicationController
-  
+
   before_action :authenticate_admin!
 
   def index
@@ -12,7 +12,6 @@ class Admin::WorksController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
     @work = Work.find(params[:id])
   end
 
