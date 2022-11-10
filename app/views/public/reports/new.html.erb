@@ -1,29 +1,20 @@
   <div class="container mt-5">
     <div class="row">
       <div class="col-6">
-
           <h2>コメントを管理者に報告</h2>
               <div class="mt-5 mb-5">
                  <h3>報告理由（例）</h3>
                   <ul>
                       <li>他者を攻撃している</li>
-
                       <li>犯罪を助長している</li>
                   </ul>
               </div>
-
               <%= form_with model:[@work, @comment, @report] do |f| %>
                  <%= f.text_area :body ,size: "40x10" %>
-
                  <%= f.hidden_field :work_id, value: @work.id %>
-
                  <%= f.hidden_field :comment_id, value: @comment.id %>
-
                  <%= f.submit"送信" %>
               <% end %>
-
-
-
     </div>
    </div>
   </div>

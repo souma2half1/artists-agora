@@ -13,14 +13,10 @@
     更新日：<%= @work.updated_at.strftime("%Y-%m-%D") %><br/>
     <% if current_user.is_guest? %>
       <% if @work.user == current_user %>
-        <button type="button" class="btn btn-success">
-        <%= link_to "編集・削除",edit_work_path(@work) %><br/>
-        </button>
-      <% end %> 
-        <button type="button" class="btn btn-info m-3">
-        <%= link_to 'コメント', work_comments_path(@work.id), method: :get %>
-        </button>
-        <hr>
+        <%= link_to "編集・削除",edit_work_path(@work),class:"btn btn-success mt-3" %><br/>
+      <% end %>
+      <%= link_to 'コメント', work_comments_path(@work.id), method: :get ,class:"btn btn-info mt-3"%>
+      <hr>
     <% end %>
     <% if @comments.count > 0 %>
       <%= render 'common/comments', comments: @comments%>

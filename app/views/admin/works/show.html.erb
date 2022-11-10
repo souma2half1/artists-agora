@@ -9,9 +9,7 @@
       ジャンル：<%= @work.genre %><br/>
       作品説明：<%= @work.introduction %><br/>
       更新日：<%= @work.updated_at.strftime("%Y-%m-%D") %><br/>
-      <button type="button" class="btn btn-success mt-2">
-        <%= link_to "編集・削除",edit_admin_work_path(@work) %><br/>
-      </button>
+      <%= link_to "編集・削除",edit_admin_work_path(@work),class:"btn btn-success mt-3" %><br/>
       <hr>
       <% if @comments.count > 0 %>
         <h4 class="mt-5 ">最新コメント</h4>

@@ -24,9 +24,7 @@
               <%= f.submit '変更を保存', class: "btn btn-primary mt-3 mb-3" %>
             </div>
           <% end %>
-          <button type="button" class="btn btn-danger mb-2">
-            <%= link_to "アカウントを削除",unsubscribe_path(id: @user.id) %>
-          </button>
+            <%= link_to "アカウントを削除",unsubscribe_path(id: @user.id),class:"btn btn-danger mb-2 ml-3" %>
       </div>
     </div>
  </div>
