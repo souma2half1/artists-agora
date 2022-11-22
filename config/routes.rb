@@ -2,7 +2,6 @@ Rails.application.routes.draw do
 
   root 'public/homes#top'
 
-
   #ユーザー用
   devise_for :users,skip: [:passwords], controllers: {
   registrations: "public/registrations",
@@ -10,7 +9,6 @@ Rails.application.routes.draw do
 }
 
  scope module: :public do
-  #ここにpublicのルート
 
    post '/homes/guest_sign_in', to: 'homes#new_guest'
    get 'users/unsubscribe'=> 'users#unsubscribe',as: "unsubscribe"
@@ -42,7 +40,7 @@ Rails.application.routes.draw do
 }
 
  namespace :admin do
-   #ここにadminのルート
+
    get 'admin' => 'homes#top'
    get 'search' => 'searches#index'
    get 'users/unsubscribe'=> 'users#unsubscribe',as: "unsubscribe"
