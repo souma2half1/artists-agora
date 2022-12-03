@@ -1,34 +1,32 @@
 <div class="container mt-5">
   <div class="row">
     <div class="col-12">
-
-        <h2 class="mb-3">ユーザー情報編集</h2>
-
-        <% if @user.image.present? %>
-         <%= image_tag @user.image , size: "200x200"%>
-        <% end %>
-         <%= form_with model:@user,url: admin_user_path(@user),method: "patch", id: "patch" do |f| %>
-            <div class="m-3">
-              <%= f.label :image, "プロフィール画像：" %><br/>
-              <%= f.file_field :image, accept: "image/*" , class: "form-controll" %>
-            </div>
-            <div class="m-3">
-              <%= f.label :name, "ユーザー名：" %><br/>
-              <%= f.text_field :name %>
-            </div>
-            <div class="m-3">
-              <%= f.label :introduction, "自己紹介：" %><br/>
-              <%= f.text_area :introduction,size: "30x5" %>
-            </div>
-            <div class="m-3">
-              <%= f.label :email, "メールアドレス：" %><br/>
-              <%= f.text_area :email %>
-            </div>
-            <div class="m-3">
-              <%= f.submit '変更を保存',form: "patch", class: "btn btn-primary mt-3 mb-3" %>
-            </div>
+    <h2 class="mb-3">ユーザー情報編集</h2>
+      <% if @user.image.present? %>
+        <%= image_tag @user.image , size: "200x200"%>
+      <% end %>
+      <%= form_with model:@user,url: admin_user_path(@user),method: "patch", id: "patch" do |f| %>
+        <div class="m-3">
+          <%= f.label :image, "プロフィール画像：" %><br/>
+          <%= f.file_field :image, accept: "image/*" , class: "form-controll" %>
+        </div>
+        <div class="m-3">
+          <%= f.label :name, "ユーザー名：" %><br/>
+          <%= f.text_field :name %>
+        </div>
+        <div class="m-3">
+          <%= f.label :introduction, "自己紹介：" %><br/>
+          <%= f.text_area :introduction,size: "30x5" %>
+        </div>
+        <div class="m-3">
+          <%= f.label :email, "メールアドレス：" %><br/>
+          <%= f.text_area :email %>
+        </div>
+        <div class="m-3">
+          <%= f.submit '変更を保存',form: "patch", class: "btn btn-primary mt-3 mb-3" %>
+        </div>
           <% end %>
-            <%= link_to "アカウントを削除", admin_unsubscribe_path(id: @user.id),class:"btn btn-danger ml-3" %>
-   </div>
+        <%= link_to "アカウントを削除", admin_unsubscribe_path(id: @user.id),class:"btn btn-danger ml-3" %>
+    </div>
   </div>
- </div>
+</div>
