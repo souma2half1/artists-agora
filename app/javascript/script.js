@@ -1,8 +1,23 @@
-$(function(){
-  $('.box1').mouseover(function(){
-    $('.box1').css({'background-color': '#0000FF'});
+$(document).on('turbolinks:load', function() {
+  $(function(){
+  $('.post-card').mouseover(function(){
+    $(this).addClass('post-card-ext');
   });
-  $('.box1').mouseout(function(){
-    $('.box1').css({'background-color': '#FF0000'});
+  $('.post-card').mouseout(function(){
+    $(this).removeClass('post-card-ext');
   });
+});
+});
+
+
+$(document).on('turbolinks:load', function() {
+  $(function(){
+  $('.work-image').slideDown();
+});
+});
+
+$(document).on('turbolinks:load', function() {
+  $(function(){
+  $('.intro').fadeIn(800);
+});
 });
